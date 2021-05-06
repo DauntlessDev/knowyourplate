@@ -3,8 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_viewmodel.dart';
-import 'package:knowyourplate/ui/widgets/avatar.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:stacked/stacked.dart';
 
 class UserSearchView extends StatelessWidget {
@@ -59,49 +57,40 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
       ),
       body: ListView(
         children: <Widget>[
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
+          _UserRecord(
+            title: 'Sinigang na hipon',
             date: 'Nov 28, 2021',
-          ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
-            date: 'Nov 28, 2021',
-          ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
-            date: 'Nov 28, 2021',
-          ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
-            date: 'Nov 28, 2021',
-          ),
-          UserRecord(
-            title: 'Green Light Weight Dress',
-            date: 'Nov 28, 2021',
+            pictureUrl: '',
           ),
         ],
       ),
@@ -109,41 +98,62 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
   }
 }
 
-class UserRecord extends StatelessWidget {
-  const UserRecord({
+class _UserRecord extends ViewModelWidget<UserSearchViewModel> {
+  const _UserRecord({
     Key key,
     @required this.title,
+    @required this.pictureUrl,
     @required this.date,
-  }) : super(key: key);
+  }) : super(key: key, reactive: true);
 
   final String title;
+  final String pictureUrl;
   final String date;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, UserSearchViewModel model) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
+      padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 0),
       child: Card(
-        child: Column(
-          children: [
-            // Image(image: AssetImage(pictureUrl)),
-            SizedBox(height: 10),
-            Text(
-              title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
-            Text(
-              date,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400),
-            ),
-            SizedBox(height: 20),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: <Widget>[
+              // Image(
+              //   image: AssetImage(pictureUrl),
+              //   height: 150,
+              //   width: 100,
+              //   fit: BoxFit.fitHeight,
+              // ),
+              Container(
+                color: Colors.lightGreenAccent,
+                width: 50,
+                height: 50,
+              ),
+              SizedBox(width: 15),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: 15),
+                  Text(
+                    title.length < 25 ? title : '${title.substring(0, 22)}...',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    date,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
