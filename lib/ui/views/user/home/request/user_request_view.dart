@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class UserProfileView extends StatelessWidget {
+class UserRequestView extends StatelessWidget {
   static final navigatorKey = GlobalKey<NavigatorState>();
   
   @override
@@ -8,7 +8,7 @@ class UserProfileView extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Text('User Profile'),
+          child: Text('User Request'),
         ),
       ),
     );

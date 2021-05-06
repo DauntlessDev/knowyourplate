@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/landing_view.dart';
+import 'package:knowyourplate/ui/views/user/home/user_home_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: LandingView(),
+      // home: LandingView(),
+      home: UserHomeView(),
     );
   }
 }
