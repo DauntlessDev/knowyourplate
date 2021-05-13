@@ -2,7 +2,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:knowyourplate/model/profile.dart';
+import 'package:knowyourplate/model/record.dart';
+import 'package:knowyourplate/model/recordprofile.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_viewmodel.dart';
+import 'package:knowyourplate/ui/widgets/smart_widgets/user/userrecord_tile.dart';
 import 'package:stacked/stacked.dart';
 
 class UserSearchView extends StatelessWidget {
@@ -57,40 +61,158 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
       ),
       body: ListView(
         children: <Widget>[
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
-          _UserRecord(
-            title: 'Sinigang na hipon',
-            date: 'Nov 28, 2021',
-            pictureUrl: '',
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
+          ),
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
+          ),
+          UserRecord(
+            recordProfile: RecordProfile(
+              record: Record(
+                  title: 'Sinigang na hipon',
+                  date: 'Nov 28, 2021',
+                  userEmail: "email",
+                  userId: "email",
+                  pictureUrl: ''),
+              userProfile: Profile(
+                displayName: 'yes',
+                email: 'email',
+                photoUrl: 'qwe',
+                records: 3,
+                uid: '12',
+              ),
+            ),
           ),
         ],
       ),
@@ -98,64 +220,64 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
   }
 }
 
-class _UserRecord extends ViewModelWidget<UserSearchViewModel> {
-  const _UserRecord({
-    Key key,
-    @required this.title,
-    @required this.pictureUrl,
-    @required this.date,
-  }) : super(key: key, reactive: true);
+// class _UserRecord extends ViewModelWidget<UserSearchViewModel> {
+//   const _UserRecord({
+//     Key key,
+//     @required this.title,
+//     @required this.pictureUrl,
+//     @required this.date,
+//   }) : super(key: key, reactive: true);
 
-  final String title;
-  final String pictureUrl;
-  final String date;
+//   final String title;
+//   final String pictureUrl;
+//   final String date;
 
-  @override
-  Widget build(BuildContext context, UserSearchViewModel model) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            children: <Widget>[
-              // Image(
-              //   image: AssetImage(pictureUrl),
-              //   height: 150,
-              //   width: 100,
-              //   fit: BoxFit.fitHeight,
-              // ),
-              Container(
-                color: Colors.lightGreenAccent,
-                width: 50,
-                height: 50,
-              ),
-              SizedBox(width: 15),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(width: 15),
-                  Text(
-                    title.length < 25 ? title : '${title.substring(0, 22)}...',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    date,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, UserSearchViewModel model) {
+//     return Padding(
+//       padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 0),
+//       child: Card(
+//         child: Padding(
+//           padding: const EdgeInsets.all(12.0),
+//           child: Row(
+//             children: <Widget>[
+//               // Image(
+//               //   image: AssetImage(pictureUrl),
+//               //   height: 150,
+//               //   width: 100,
+//               //   fit: BoxFit.fitHeight,
+//               // ),
+//               Container(
+//                 color: Colors.lightGreenAccent,
+//                 width: 50,
+//                 height: 50,
+//               ),
+//               SizedBox(width: 15),
+//               Column(
+//                 mainAxisAlignment: MainAxisAlignment.start,
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   SizedBox(width: 15),
+//                   Text(
+//                     title.length < 25 ? title : '${title.substring(0, 22)}...',
+//                     style: TextStyle(
+//                         color: Colors.black,
+//                         fontSize: 12,
+//                         fontWeight: FontWeight.bold),
+//                   ),
+//                   Text(
+//                     date,
+//                     style: TextStyle(
+//                         color: Colors.black,
+//                         fontSize: 11,
+//                         fontWeight: FontWeight.w400),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
