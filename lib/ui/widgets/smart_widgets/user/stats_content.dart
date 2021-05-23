@@ -1,13 +1,11 @@
-//view class
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/recordprofile.dart';
-import 'package:knowyourplate/ui/widgets/smart_widgets/user/userrecord_tile.dart';
+import 'package:knowyourplate/ui/widgets/smart_widgets/user/charts/groupedbarchart.dart';
 import '../../avatar.dart';
-import '../../empty_content.dart';
 
-class ProfileContent extends StatefulWidget {
-  const ProfileContent({
+class StatsContent extends StatefulWidget {
+  const StatsContent({
     Key key,
     @required this.profile,
     @required this.userRecordList,
@@ -17,10 +15,10 @@ class ProfileContent extends StatefulWidget {
   final List<RecordProfile> userRecordList;
 
   @override
-  _ProfileContentState createState() => _ProfileContentState();
+  _StatsContentState createState() => _StatsContentState();
 }
 
-class _ProfileContentState extends State<ProfileContent> {
+class _StatsContentState extends State<StatsContent> {
   @override
   void dispose() {
     // final _visitProfile = locator<VisitProfileService>();
@@ -44,8 +42,8 @@ class _ProfileContentState extends State<ProfileContent> {
             alignment: Alignment.bottomLeft,
             child: Row(
               children: <Widget>[
-                Icon(Icons.pages),
-                Text(' Posts'),
+                Icon(Icons.bar_chart),
+                Text(' Charts'),
               ],
             ),
           ),
@@ -55,56 +53,16 @@ class _ProfileContentState extends State<ProfileContent> {
               height: 1,
             ),
           ),
-          OwnPostListBuilder(
-            ownRecordList: widget.userRecordList,
-            profile: widget.profile,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                height: 500,
+                child: GroupedBarChart.withSampleData(),
+              ),
+            ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class OwnPostListBuilder extends StatelessWidget {
-  const OwnPostListBuilder({
-    Key key,
-    @required this.profile,
-    @required this.ownRecordList,
-  }) : super(key: key);
-
-  final List<RecordProfile> ownRecordList;
-
-  final Profile profile;
-
-  @override
-  Widget build(BuildContext context) {
-    print('ownPOstsLsist : ${ownRecordList.isEmpty}');
-    if (ownRecordList.isEmpty) {
-      return Expanded(
-        child: SizedBox(
-          height: 500,
-          child: EmptyContent(
-            title: 'Empty Posts',
-            message: 'The user don\'t have any post.',
-          ),
-        ),
-      );
-    }
-    return Expanded(
-      child: ListView.separated(
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return Container();
-          }
-          if (index == ownRecordList.length + 1) return Container();
-          return UserRecord(recordProfile: ownRecordList[index - 1]);
-        },
-        itemCount: ownRecordList.length + 2,
-        separatorBuilder: (BuildContext context, int index) => Divider(
-          color: Colors.grey,
-          thickness: .2,
-          height: .2,
-        ),
       ),
     );
   }

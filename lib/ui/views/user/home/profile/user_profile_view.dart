@@ -39,8 +39,6 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
           ),
         ),
         body: ProfileContent(
-          buttonText: 'Change Picture',
-          onPressed: () => {},
           userRecordList: [
             RecordProfile(
                 record: Record(
@@ -198,13 +196,12 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                 )),
           ],
           profile: Profile(
-            displayName: 'yes',
-            email: 'email',
-            photoUrl: 'qwe',
+            displayName: 'Brave Leuterio',
+            email: 'braveleuterio@gmail.com',
+            photoUrl: '',
             records: 3,
             uid: '12',
           ),
-          buttonColor: Theme.of(context).primaryColor,
         ));
     // body: Text("Profile"));
   }
