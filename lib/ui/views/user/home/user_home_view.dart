@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/profile/user_profile_view.dart';
+import 'package:knowyourplate/ui/views/user/home/record/record_view.dart';
 import 'package:knowyourplate/ui/views/user/home/request/user_request_view.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_view.dart';
 import 'package:knowyourplate/ui/views/user/home/statistics/user_stats_view.dart';
@@ -16,6 +17,19 @@ class UserHomeView extends StatelessWidget {
       viewModelBuilder: () => UserHomeViewModel(),
       // onModelReady: (model) => model.initialize(),
       builder: (context, model, child) => Scaffold(
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 50),
+          child: FloatingActionButton(
+            backgroundColor: Colors.green,
+            child: Icon(Icons.receipt_rounded),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RecordView()),
+              );
+            },
+          ),
+        ),
         body: _CupertinoHomeScaffold(
             currentTab: model.currentTab,
             onSelectTab: model.select,
