@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "22096716078",
+    "project_id": "knowyourplate-4790c",
+    "storage_bucket": "knowyourplate-4790c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22096716078:android:d797eee42f82b4789edabf",
+        "android_client_info": {
+          "package_name": "com.example.knowyourplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22096716078-891s378qr9nhi5ue3l983l34jgab4jit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQYpnlfGzvwh6AfTXy1qLihuLv7Bmg27k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22096716078-891s378qr9nhi5ue3l983l34jgab4jit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
