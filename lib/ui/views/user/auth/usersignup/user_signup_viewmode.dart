@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/user.dart';
-import 'package:knowyourplate/services/auth_service.dart';
+import 'package:knowyourplate/services/functional_services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 
 class UserSignupViewModel extends BaseViewModel {
