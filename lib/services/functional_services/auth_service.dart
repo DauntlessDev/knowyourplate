@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

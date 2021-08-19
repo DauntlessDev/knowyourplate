@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:knowyourplate/model/record.dart';
 // import 'package:knowyourplate/model/message.dart';
 // import 'package:knowyourplate/model/post.dart';
 import 'package:knowyourplate/model/profile.dart';

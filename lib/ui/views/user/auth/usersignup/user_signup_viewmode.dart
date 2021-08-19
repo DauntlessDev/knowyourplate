@@ -1,11 +1,9 @@
 import 'package:flutter/services.dart';
-import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/user.dart';
 import 'package:knowyourplate/services/functional_services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 
 class UserSignupViewModel extends BaseViewModel {
-  
   final _auth = AuthenticationService.instance;
 
   String _displayName = "";
@@ -30,7 +28,8 @@ class UserSignupViewModel extends BaseViewModel {
     _confirmPassword = "";
   }
 
-  Future signUpWithEmail() async { try {
+  Future<bool> signUpWithEmail() async {
+    try {
       if (_displayName.isEmpty ||
           _email.isEmpty ||
           _password.isEmpty ||
@@ -74,16 +73,18 @@ class UserSignupViewModel extends BaseViewModel {
         // );
         clearInputs();
         setBusy(false);
+
+        return true;
         // _navigation.back();
       }
     } on PlatformException catch (e) {
       setBusy(false);
+
+      return false;
       // await _dialog.showDialog(
       //   title: 'Sign-up Failed',
       //   description: e.message,
       // );
     }
   }
-
-  
 }

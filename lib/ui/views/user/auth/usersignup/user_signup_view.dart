@@ -43,6 +43,7 @@ class _MainContent extends ViewModelWidget<UserSignupViewModel> {
 
   @override
   Widget build(BuildContext context, UserSignupViewModel model) {
+    bool result;
     return AnimatedPadding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -64,7 +65,10 @@ class _MainContent extends ViewModelWidget<UserSignupViewModel> {
             _SignupForm(),
             const SizedBox(height: 20),
             RoundedButton(
-              onPressed: model.signUpWithEmail,
+              onPressed: () async => {
+                result = await model.signUpWithEmail(),
+                if (result) {Navigator.pop(context)}
+              },
               text: 'Continue',
               color: Theme.of(context).colorScheme.primary,
             ),
