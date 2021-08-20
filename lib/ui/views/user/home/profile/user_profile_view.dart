@@ -32,11 +32,11 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
             children: [
               Text(
                 'Profile ',
-                // style: Theme.of(context).appBarTheme.textTheme.headline1,
               ),
               const Icon(Icons.person),
             ],
           ),
+          actions: <Widget>[ProfileMenu()],
         ),
         body: ProfileContent(
           userRecordList: [
@@ -204,5 +204,111 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
           ),
         ));
     // body: Text("Profile"));
+  }
+}
+
+class ProfileMenu extends ViewModelWidget<UserProfileViewModel> {
+  ProfileMenu({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, UserProfileViewModel model) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        cardColor: Colors.white,
+      ),
+      child: PopupMenuButton(
+        icon: Icon(Icons.menu, color: Colors.white),
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<_OptionTile>>[
+          PopupMenuItem<_OptionTile>(
+            child: _OptionTile(
+              option: Option(
+                title: 'Logout',
+                iconData: Icons.exit_to_app,
+                onTap: () => {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: Text("Sign-out"),
+                      actions: [
+                        FlatButton(
+                            onPressed: ()  => {
+                                  model.signOutTrue(),
+                                  Navigator.of(context, rootNavigator: true).pop()
+                                },
+                            child: Text("Yes")),
+                        FlatButton(
+                            onPressed: () => {
+                                  Navigator.of(context, rootNavigator: true).pop()
+                                },
+                            child: Text("No"))
+                      ],
+                    ),
+                  )
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//   Future<void> signOutTrue() async {
+//     try {
+//       DialogResponse decision = await _dialog.showConfirmationDialog(
+//         title: 'Log-out',
+//         description: 'Are you sure in logging out?',
+//         confirmationTitle: 'Confirm',
+//         cancelTitle: 'Cancel',
+//       );
+
+//       if (decision.confirmed) {
+//         await _auth.signOut();
+//         _chatlist.clear();
+//         _user.updateCurrentUserInfo(User(email: '', uid: ''));
+//       }
+//     } on PlatformException catch (e) {
+//       _dialog.showDialog(
+//         title: 'Sign-up Failed',
+//         description: e.message,
+//       );
+//     }
+//   }
+// }
+
+class Option {
+  final String title;
+  final IconData iconData;
+  final String subTitle;
+  final String category;
+  final bool isSwitch;
+  final Function onTap;
+
+  Option(
+      {@required this.title,
+      @required this.iconData,
+      this.subTitle,
+      this.category,
+      this.isSwitch = false,
+      @required this.onTap});
+}
+
+class _OptionTile extends StatelessWidget {
+  const _OptionTile({Key key, @required this.option}) : super(key: key);
+  final Option option;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        option.iconData,
+        color: Theme.of(context).primaryColor,
+      ),
+      title: Text(option.title),
+      onTap: option.onTap,
+    );
   }
 }
