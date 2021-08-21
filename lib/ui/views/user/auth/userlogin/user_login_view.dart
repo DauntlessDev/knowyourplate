@@ -41,6 +41,7 @@ class _MainContent extends ViewModelWidget<UserLoginViewModel> {
 
   @override
   Widget build(BuildContext context, UserLoginViewModel model) {
+    bool result;
     return AnimatedPadding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -62,12 +63,16 @@ class _MainContent extends ViewModelWidget<UserLoginViewModel> {
             _LoginForm(passwordFocusNode: _passwordFocusNode),
             const SizedBox(height: 20),
             RoundedButton(
-              // onPressed: model.signInWithEmail,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => UserHomeView()),
-                );
+              onPressed: () async => {
+                result = await model.signInWithEmail(),
+                if (result)
+                  {
+                    Navigator.of(context).pop(),
+                  }
+                else
+                  {
+                    print('error in login'),
+                  }
               },
               text: 'Continue',
               color: Theme.of(context).colorScheme.primary,
