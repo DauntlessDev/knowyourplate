@@ -67,7 +67,7 @@ class _MainContent extends ViewModelWidget<UserSignupViewModel> {
             RoundedButton(
               onPressed: () async => {
                 result = await model.signUpWithEmail(),
-                if (result) {Navigator.pop(context)}
+                if (result) {Navigator.of(context).popUntil((route) => route.isFirst)}
               },
               text: 'Continue',
               color: Theme.of(context).colorScheme.primary,
