@@ -1,10 +1,13 @@
 import 'package:flutter/services.dart';
+import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/user.dart';
 import 'package:knowyourplate/services/functional_services/auth_service.dart';
+import 'package:knowyourplate/services/functional_services/database_service.dart';
 import 'package:stacked/stacked.dart';
 
 class UserSignupViewModel extends BaseViewModel {
   final _auth = AuthenticationService.instance;
+  final _database = DatabaseService.instance;
 
   String _displayName = "";
   String _email = "";
@@ -49,28 +52,26 @@ class UserSignupViewModel extends BaseViewModel {
         User user = await _auth.createWithEmailAndPassword(
             email: _email, password: _password);
 
-        // setSearchParam(String caseNumber) {
-        //   List<String> caseSearchList = List();
-        //   String temp = "";
-        //   for (int i = 0; i < caseNumber.length; i++) {
-        //     temp = temp + caseNumber[i];
-        //     caseSearchList.add(temp);
-        //   }
-        //   return caseSearchList;
-        // }
+        setSearchParam(String caseNumber) {
+          List<String> caseSearchList = List();
+          String temp = "";
+          for (int i = 0; i < caseNumber.length; i++) {
+            temp = temp + caseNumber[i];
+            caseSearchList.add(temp);
+          }
+          return caseSearchList;
+        }
 
-        // await _database.setProfile(
-        //   Profile(
-        //     uid: user.uid,
-        //     email: _email,
-        //     photoUrl: '',
-        //     displayName: _displayName,
-        //     caseSearch: setSearchParam(_displayName.toLowerCase()),
-        //     followers: 0,
-        //     following: 0,
-        //     posts: 0,
-        //   ),
-        // );
+        await _database.setProfile(
+          Profile(
+            uid: user.uid,
+            email: _email,
+            photoUrl: '',
+            displayName: _displayName,
+            caseSearch: setSearchParam(_displayName.toLowerCase()),
+            records: 0,
+          ),
+        );
         clearInputs();
         setBusy(false);
 
