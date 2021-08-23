@@ -43,6 +43,7 @@ class _MainContent extends ViewModelWidget<UserStatsViewModel> {
           photoUrl: '',
           records: 3,
           uid: '12',
+          caseSearch: ['y', 'ye', 'yes'],
         ),
         userRecordList: [],
       ),

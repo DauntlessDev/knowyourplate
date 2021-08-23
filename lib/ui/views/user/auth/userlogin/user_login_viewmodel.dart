@@ -27,7 +27,7 @@ class UserLoginViewModel extends BaseViewModel {
         throw PlatformException(
             code: 'EMPTY_FIELDS', message: 'Please fill out all fields.');
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       // await _dialog.showDialog(title: 'Login Failed', description: e.message);
       setBusy(false);
       return false;

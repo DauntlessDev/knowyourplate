@@ -53,7 +53,7 @@ class UserSignupViewModel extends BaseViewModel {
             email: _email, password: _password);
 
         setSearchParam(String caseNumber) {
-          List<String> caseSearchList = List();
+          List<String> caseSearchList = [];
           String temp = "";
           for (int i = 0; i < caseNumber.length; i++) {
             temp = temp + caseNumber[i];
@@ -78,7 +78,7 @@ class UserSignupViewModel extends BaseViewModel {
         return true;
         // _navigation.back();
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       setBusy(false);
 
       return false;

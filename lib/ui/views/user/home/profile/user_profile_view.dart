@@ -53,6 +53,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -67,6 +68,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -81,6 +83,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -95,6 +98,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -109,6 +113,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -123,6 +128,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -137,6 +143,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -151,6 +158,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -165,6 +173,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -179,6 +188,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
             RecordProfile(
                 record: Record(
@@ -193,6 +203,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                   photoUrl: 'qwe',
                   records: 3,
                   uid: '12',
+                  caseSearch: ['y', 'ye', 'yes'],
                 )),
           ],
           profile: Profile(
@@ -201,6 +212,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
             photoUrl: '',
             records: 3,
             uid: '12',
+            caseSearch: ['y', 'ye', 'yes'],
           ),
         ));
     // body: Text("Profile"));
@@ -232,15 +244,17 @@ class ProfileMenu extends ViewModelWidget<UserProfileViewModel> {
                     builder: (_) => AlertDialog(
                       title: Text("Sign-out"),
                       actions: [
-                        FlatButton(
-                            onPressed: ()  => {
+                        TextButton(
+                            onPressed: () => {
                                   model.signOutTrue(),
-                                  Navigator.of(context, rootNavigator: true).pop()
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop()
                                 },
                             child: Text("Yes")),
-                        FlatButton(
+                        TextButton(
                             onPressed: () => {
-                                  Navigator.of(context, rootNavigator: true).pop()
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop()
                                 },
                             child: Text("No"))
                       ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/auth/usersignup/user_signup_view.dart';
 import 'package:knowyourplate/ui/views/user/auth/userlogin/user_login_viewmodel.dart';
-import 'package:knowyourplate/ui/views/user/home/user_home_view.dart';
 import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';
 import 'package:knowyourplate/ui/widgets/roundedbutton.dart';
 import 'package:knowyourplate/ui/widgets/tappable_richtext.dart';
