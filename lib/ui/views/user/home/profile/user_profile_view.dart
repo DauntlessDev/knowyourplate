@@ -207,12 +207,12 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                 )),
           ],
           profile: Profile(
-            displayName: 'Brave Leuterio',
-            email: 'braveleuterio@gmail.com',
+            displayName: model.profile.displayName,
+            email: model.profile.email,
             photoUrl: '',
-            records: 3,
+            records: model.profile.records,
             uid: '12',
-            caseSearch: ['y', 'ye', 'yes'],
+            caseSearch: model.profile.caseSearch,
           ),
         ));
     // body: Text("Profile"));
