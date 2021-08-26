@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 // import 'package:knowyourplate/model/message.dart';
 // import 'package:knowyourplate/model/post.dart';
 import 'package:knowyourplate/model/profile.dart';
+import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/services/state_services/current_user_service.dart';
 // import 'package:knowyourplate/services/state_services/current_chatroom_service.dart';
 // import 'package:knowyourplate/services/state_services/current_user_service.dart';
@@ -18,9 +19,9 @@ class DatabaseService {
   final _service = FirebaseService.instance;
   final _user = CurrentUserService.instance;
 
-  // Future<File> getImage() async {
-  //   return await _service.getImage();
-  // }
+  Future<File> getImage() async {
+    return await _service.getImage();
+  }
 
   // Future<String> uploadProfilePic({@required File image}) async {
   //   String _uid = _user.uid;
@@ -28,8 +29,9 @@ class DatabaseService {
   // }
 
   Future<String> uploadPostPicture(
-      {@required File image, @required String postId}) async {
-    return _service.uploadPic(image: image, path: APIPath.postPicture(postId));
+      {@required File image, @required String recordId}) async {
+    return _service.uploadPic(
+        image: image, path: APIPath.postPicture(recordId));
   }
 
   Future<void> setProfile(Profile profile) async {
@@ -61,5 +63,12 @@ class DatabaseService {
         builder: (data) => Profile.fromMap(data),
         queryBuilder: (query) =>
             query.where('caseSearch', arrayContains: searchInput));
+  }
+
+  Future<void> setRecord({@required Record record}) async {
+    await _service.setData(
+      path: APIPath.record(record.recordId),
+      data: record.toMap(),
+    );
   }
 }

@@ -45,7 +45,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -60,7 +60,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -75,7 +75,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -90,7 +90,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -105,7 +105,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -120,7 +120,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -135,7 +135,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -150,7 +150,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -165,7 +165,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -180,7 +180,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',
@@ -195,7 +195,7 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
                     title: 'Sinigang na hipon',
                     date: 'Nov 28, 2021',
                     userEmail: "email",
-                    userId: "email",
+                    recordId: "2",
                     pictureUrl: ''),
                 userProfile: Profile(
                   displayName: 'yes',

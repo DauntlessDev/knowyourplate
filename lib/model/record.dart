@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 class Record {
-  String userId;
+  String recordId;
   String userEmail;
   String title;
   String pictureUrl;
   String date;
   Record({
-    @required this.userId,
+    @required this.recordId,
     @required this.userEmail,
     @required this.title,
     @required this.pictureUrl,
@@ -17,28 +17,28 @@ class Record {
   });
 
   Record copyWith({
-    String postId,
-    String posterEmail,
-    String description,
+    String recordId,
+    String userEmail,
+    String title,
     String pictureUrl,
-    String time,
+    String date,
   }) {
     return Record(
-      userId: postId ?? this.userId,
-      userEmail: posterEmail ?? this.userEmail,
-      title: description ?? this.title,
+      recordId: recordId ?? this.recordId,
+      userEmail: userEmail ?? this.userEmail,
+      title: title ?? this.title,
       pictureUrl: pictureUrl ?? this.pictureUrl,
-      date: time ?? this.date,
+      date: date ?? this.date,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'postId': userId,
-      'posterEmail': userEmail,
-      'description': title,
+      'recordId': recordId,
+      'userEmail': userEmail,
+      'title': title,
       'pictureUrl': pictureUrl,
-      'time': date,
+      'date': date,
     };
   }
 
@@ -46,11 +46,11 @@ class Record {
     if (map == null) return null;
 
     return Record(
-      userId: map['postId'],
-      userEmail: map['posterEmail'],
-      title: map['description'],
+      recordId: map['recordId'],
+      userEmail: map['userEmail'],
+      title: map['title'],
       pictureUrl: map['pictureUrl'],
-      date: map['time'],
+      date: map['date'],
     );
   }
 
@@ -60,7 +60,7 @@ class Record {
 
   @override
   String toString() {
-    return 'Post(postId: $userId, posterEmail: $userEmail, description: $title, pictureUrl: $pictureUrl, time: $date)';
+    return 'Post(recordId: $recordId, userEmail: $userEmail, title: $title, pictureUrl: $pictureUrl, date: $date)';
   }
 
   @override
@@ -68,7 +68,7 @@ class Record {
     if (identical(this, o)) return true;
 
     return o is Record &&
-        o.userId == userId &&
+        o.recordId == recordId &&
         o.userEmail == userEmail &&
         o.title == title &&
         o.pictureUrl == pictureUrl &&
@@ -77,7 +77,7 @@ class Record {
 
   @override
   int get hashCode {
-    return userId.hashCode ^
+    return recordId.hashCode ^
         userEmail.hashCode ^
         title.hashCode ^
         pictureUrl.hashCode ^

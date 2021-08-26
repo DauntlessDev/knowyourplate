@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 // import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -147,14 +148,14 @@ class FirebaseService {
     return snapshot.then((snapshot) => builder(snapshot.data));
   }
 
-  // Future<File> getImage() async {
-  //   ImagePicker _imagePicker = ImagePicker();
-  //   PickedFile pickImage =
-  //       await _imagePicker.getImage(source: ImageSource.gallery);
+  Future<File> getImage() async {
+    ImagePicker _imagePicker = ImagePicker();
+    PickedFile pickImage =
+        await _imagePicker.getImage(source: ImageSource.gallery);
 
-  //   File image = File(pickImage.path);
-  //   return image;
-  // }
+    File image = File(pickImage.path);
+    return image;
+  }
 
   Future<String> uploadPic({
     @required File image,

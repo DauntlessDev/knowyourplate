@@ -39,6 +39,8 @@ dependencies:
 
   stacked: ^1.7.0
 
+  image_picker: ^0.6.7+4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
