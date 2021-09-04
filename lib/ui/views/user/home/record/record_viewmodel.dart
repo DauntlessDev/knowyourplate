@@ -53,7 +53,7 @@ class RecordViewModel extends BaseViewModel {
   }
 
   Future<void> proceedRecord() async {
-    if (_title.isNotEmpty) {
+    if (_title.isNotEmpty && _selectedImage != null) {
       setBusy(true);
       String date = DateTime.now().toIso8601String();
       String _recordId = generatedPostId(posterEmail: _user.email, time: date);

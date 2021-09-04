@@ -41,7 +41,8 @@ class _MainContent extends ViewModelWidget<RecordViewModel> {
 
   @override
   Widget build(BuildContext context, RecordViewModel model) {
-    bool result;
+    bool imageResult;
+    bool recordResult;
     return AnimatedPadding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -64,10 +65,28 @@ class _MainContent extends ViewModelWidget<RecordViewModel> {
             const SizedBox(height: 20),
             RoundedButton(
               onPressed: () async => {
-                if (result)
+                await model.addImage(),
+                // imageResult = await model.addImage();
+                imageResult = true,
+                if (imageResult)
                   {
-                    // await reloadPost();
-                    await model.proceedRecord(),
+                    print('success in adding image'),
+                  }
+                else
+                  {
+                    print('error in adding image'),
+                  }
+              },
+              text: 'Add photo',
+              color: Colors.lightGreenAccent,
+            ),
+            RoundedButton(
+              onPressed: () async => {
+                await model.proceedRecord(),
+                // recordResult = await model.proceedRecord();
+                recordResult = true,
+                if (recordResult)
+                  {
                     Navigator.of(context).popUntil((route) => route.isFirst),
                   }
                 else
@@ -75,7 +94,7 @@ class _MainContent extends ViewModelWidget<RecordViewModel> {
                     print('error in adding record'),
                   }
               },
-              text: 'Add',
+              text: 'Add Record',
               color: Theme.of(context).colorScheme.primary,
             ),
             const Spacer(flex: 4),
