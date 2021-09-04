@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/record/record_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';
 import 'package:knowyourplate/ui/widgets/roundedbutton.dart';
-import 'package:knowyourplate/ui/widgets/tappable_richtext.dart';
 import 'package:stacked/stacked.dart';
 
 class RecordView extends StatelessWidget {

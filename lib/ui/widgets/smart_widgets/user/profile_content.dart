@@ -1,7 +1,7 @@
 //view class
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/profile.dart';
-import 'package:knowyourplate/model/recordprofile.dart';
+import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/userrecord_tile.dart';
 import '../../avatar.dart';
 import '../../empty_content.dart';
@@ -14,7 +14,7 @@ class ProfileContent extends StatefulWidget {
   }) : super(key: key);
 
   final Profile profile;
-  final List<RecordProfile> userRecordList;
+  final List<Record> userRecordList;
 
   @override
   _ProfileContentState createState() => _ProfileContentState();
@@ -66,7 +66,6 @@ class _ProfileContentState extends State<ProfileContent> {
     );
   }
 }
-
 class OwnPostListBuilder extends StatelessWidget {
   const OwnPostListBuilder({
     Key key,
@@ -74,7 +73,7 @@ class OwnPostListBuilder extends StatelessWidget {
     @required this.ownRecordList,
   }) : super(key: key);
 
-  final List<RecordProfile> ownRecordList;
+  final List<Record> ownRecordList;
 
   final Profile profile;
 
@@ -99,7 +98,7 @@ class OwnPostListBuilder extends StatelessWidget {
             return Container();
           }
           if (index == ownRecordList.length + 1) return Container();
-          return UserRecord(recordProfile: ownRecordList[index - 1]);
+          return UserRecord(record: ownRecordList[index - 1]);
         },
         itemCount: ownRecordList.length + 2,
         separatorBuilder: (BuildContext context, int index) => Divider(

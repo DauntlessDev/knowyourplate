@@ -71,4 +71,16 @@ class DatabaseService {
       data: record.toMap(),
     );
   }
+
+  
+
+  Stream<List<Record>> specificRecordStream(String email) {
+    return _service.collectionStreamNoID(
+      path: APIPath.records(),
+      builder: (data) => Record.fromMap(data),
+      sort: (a, b) => a.date.compareTo(b.date),
+      queryBuilder: (query) => query.where('userEmail', isEqualTo: email),
+      isReversed: true,
+    );
+  }
 }

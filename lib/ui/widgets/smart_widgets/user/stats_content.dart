@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/profile.dart';
-import 'package:knowyourplate/model/recordprofile.dart';
+import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/charts/groupedbarchart.dart';
 import '../../avatar.dart';
 
@@ -12,7 +12,7 @@ class StatsContent extends StatefulWidget {
   }) : super(key: key);
 
   final Profile profile;
-  final List<RecordProfile> userRecordList;
+  final List<Record> userRecordList;
 
   @override
   _StatsContentState createState() => _StatsContentState();

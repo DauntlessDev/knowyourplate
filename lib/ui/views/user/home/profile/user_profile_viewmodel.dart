@@ -1,4 +1,5 @@
 import 'package:knowyourplate/model/profile.dart';
+import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/model/user.dart';
 import 'package:knowyourplate/services/functional_services/auth_service.dart';
 import 'package:knowyourplate/services/functional_services/database_service.dart';
@@ -13,23 +14,25 @@ class UserProfileViewModel extends StreamViewModel<Profile> {
   Future<void> signOutTrue() async {
     await _auth.signOut();
     _user.updateCurrentUserInfo(User(email: '', uid: ''));
-    
   }
-  
-  // Stream<List<Post>> ownPostStream() =>
-  //     _database.specificPostStream(_user.email);
 
-  
+  Stream<List<Record>> ownRecordStream() =>
+      _database.specificRecordStream(_user.email);
+
   Stream<Profile> profileStream() => _database.profileStream();
+  List<Record> ownRecordList = [];
 
-  
   @override
   Stream<Profile> get stream {
-    // ownPostStream().listen((event) {
-    //   if (event != null) {
-    //     // ownPostList = event;
-    //   }
-    // });
+    ownRecordStream().listen((event) {
+      if (event != null) {
+        
+        print('ownPOstsLsist email : ${_user.email}');
+        print('ownPOstsLsist event : $event');
+        ownRecordList = event;
+        notifyListeners();
+      }
+    });
 
     profileStream().listen((event) {
       if (event != null) {

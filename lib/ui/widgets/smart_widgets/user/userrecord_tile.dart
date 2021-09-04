@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:knowyourplate/model/recordprofile.dart';
+import 'package:knowyourplate/model/record.dart';
+import 'package:knowyourplate/services/state_services/formatter_service.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class UserRecord extends StatelessWidget {
-  const UserRecord({
+  UserRecord({
     Key key,
-    @required this.recordProfile,
+    @required this.record,
   }) : super(key: key);
 
-  final RecordProfile recordProfile;
+  final Record record;
+  final _formatter = FormatterService.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +22,17 @@ class UserRecord extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Row(
             children: <Widget>[
-              // Image(
-              //   image: AssetImage(pictureUrl),
-              //   height: 150,
-              //   width: 100,
-              //   fit: BoxFit.fitHeight,
-              // ),
-              Container(
-                color: Colors.lightGreenAccent,
+              Image(
+                image: CachedNetworkImageProvider(record.pictureUrl),
                 width: 50,
                 height: 50,
+                fit: BoxFit.fitHeight,
               ),
+              // Container(
+              //   color: Colors.lightGreenAccent,
+              //   width: 50,
+              //   height: 50,
+              // ),
               SizedBox(width: 15),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -37,16 +40,16 @@ class UserRecord extends StatelessWidget {
                 children: [
                   SizedBox(width: 15),
                   Text(
-                    recordProfile.record.title.length < 25
-                        ? recordProfile.record.title
-                        : '${recordProfile.record.title.substring(0, 22)}...',
+                    record.title.length < 25
+                        ? record.title
+                        : '${record.title.substring(0, 22)}...',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 12,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    recordProfile.record.date,
+                    _formatter.formatDate(record.date),
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 11,

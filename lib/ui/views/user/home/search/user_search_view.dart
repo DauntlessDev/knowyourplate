@@ -2,9 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/record.dart';
-import 'package:knowyourplate/model/recordprofile.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/userrecord_tile.dart';
 import 'package:stacked/stacked.dart';
@@ -62,166 +60,44 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
       body: ListView(
         children: <Widget>[
           UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
+            record: Record(
+                title: 'Sinigang na hipon',
+                date: 'Nov 28, 2021',
+                userEmail: "email",
+                recordId: "2",
+                pictureUrl: ''),
           ),
           UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
+            record: Record(
+                title: 'Sinigang na hipon',
+                date: 'Nov 28, 2021',
+                userEmail: "email",
+                recordId: "2",
+                pictureUrl: ''),
           ),
           UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
+            record: Record(
+                title: 'Sinigang na hipon',
+                date: 'Nov 28, 2021',
+                userEmail: "email",
+                recordId: "2",
+                pictureUrl: ''),
           ),
           UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
+            record: Record(
+                title: 'Sinigang na hipon',
+                date: 'Nov 28, 2021',
+                userEmail: "email",
+                recordId: "2",
+                pictureUrl: ''),
           ),
           UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
-          ),
-          UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
-          ),
-          UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
-          ),
-          UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
-          ),
-          UserRecord(
-            recordProfile: RecordProfile(
-              record: Record(
-                  title: 'Sinigang na hipon',
-                  date: 'Nov 28, 2021',
-                  userEmail: "email",
-                  recordId: "2",
-                  pictureUrl: ''),
-              userProfile: Profile(
-                displayName: 'yes',
-                email: 'email',
-                photoUrl: 'qwe',
-                records: 3,
-                uid: '12',
-                caseSearch: ['y', 'ye', 'yes'],
-              ),
-            ),
+            record: Record(
+                title: 'Sinigang na hipon',
+                date: 'Nov 28, 2021',
+                userEmail: "email",
+                recordId: "2",
+                pictureUrl: ''),
           ),
         ],
       ),
