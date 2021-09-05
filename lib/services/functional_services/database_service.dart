@@ -72,8 +72,6 @@ class DatabaseService {
     );
   }
 
-  
-
   Stream<List<Record>> specificRecordStream(String email) {
     return _service.collectionStreamNoID(
       path: APIPath.records(),

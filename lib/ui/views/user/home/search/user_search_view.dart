@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_viewmodel.dart';
+import 'package:knowyourplate/ui/widgets/empty_content.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/userrecord_tile.dart';
 import 'package:stacked/stacked.dart';
 
@@ -49,6 +50,7 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
                       hintText: ' record title...',
                       suffixIcon: Icon(Icons.search),
                     ),
+                    onChanged: model.searchUsers,
                   ),
                 ),
               ),
@@ -57,112 +59,59 @@ class _MainContent extends ViewModelWidget<UserSearchViewModel> {
           ),
         ),
       ),
-      body: ListView(
-        children: <Widget>[
-          UserRecord(
-            record: Record(
-                title: 'Sinigang na hipon',
-                date: 'Nov 28, 2021',
-                userEmail: "email",
-                recordId: "2",
-                pictureUrl: ''),
-          ),
-          UserRecord(
-            record: Record(
-                title: 'Sinigang na hipon',
-                date: 'Nov 28, 2021',
-                userEmail: "email",
-                recordId: "2",
-                pictureUrl: ''),
-          ),
-          UserRecord(
-            record: Record(
-                title: 'Sinigang na hipon',
-                date: 'Nov 28, 2021',
-                userEmail: "email",
-                recordId: "2",
-                pictureUrl: ''),
-          ),
-          UserRecord(
-            record: Record(
-                title: 'Sinigang na hipon',
-                date: 'Nov 28, 2021',
-                userEmail: "email",
-                recordId: "2",
-                pictureUrl: ''),
-          ),
-          UserRecord(
-            record: Record(
-                title: 'Sinigang na hipon',
-                date: 'Nov 28, 2021',
-                userEmail: "email",
-                recordId: "2",
-                pictureUrl: ''),
-          ),
-        ],
-      ),
+      body: Column(
+          children: [
+            model.userRecordList.isEmpty
+                ? Expanded(
+                  child: Align(
+                    child: Text("Please input the title to start searching."),
+                  ),
+                )
+                : OwnPostListBuilder(ownRecordList: model.searchResult),
+          ],
+        ),
     );
   }
 }
 
-// class _UserRecord extends ViewModelWidget<UserSearchViewModel> {
-//   const _UserRecord({
-//     Key key,
-//     @required this.title,
-//     @required this.pictureUrl,
-//     @required this.date,
-//   }) : super(key: key, reactive: true);
+class OwnPostListBuilder extends StatelessWidget {
+  const OwnPostListBuilder({
+    Key key,
+    @required this.ownRecordList,
+  }) : super(key: key);
 
-//   final String title;
-//   final String pictureUrl;
-//   final String date;
+  final List<Record> ownRecordList;
 
-//   @override
-//   Widget build(BuildContext context, UserSearchViewModel model) {
-//     return Padding(
-//       padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 0),
-//       child: Card(
-//         child: Padding(
-//           padding: const EdgeInsets.all(12.0),
-//           child: Row(
-//             children: <Widget>[
-//               // Image(
-//               //   image: AssetImage(pictureUrl),
-//               //   height: 150,
-//               //   width: 100,
-//               //   fit: BoxFit.fitHeight,
-//               // ),
-//               Container(
-//                 color: Colors.lightGreenAccent,
-//                 width: 50,
-//                 height: 50,
-//               ),
-//               SizedBox(width: 15),
-//               Column(
-//                 mainAxisAlignment: MainAxisAlignment.start,
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   SizedBox(width: 15),
-//                   Text(
-//                     title.length < 25 ? title : '${title.substring(0, 22)}...',
-//                     style: TextStyle(
-//                         color: Colors.black,
-//                         fontSize: 12,
-//                         fontWeight: FontWeight.bold),
-//                   ),
-//                   Text(
-//                     date,
-//                     style: TextStyle(
-//                         color: Colors.black,
-//                         fontSize: 11,
-//                         fontWeight: FontWeight.w400),
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    print('ownPOstsLsist : ${ownRecordList.isEmpty}');
+    if (ownRecordList.isEmpty) {
+      return Expanded(
+        child: SizedBox(
+          height: 500,
+          child: EmptyContent(
+            title: 'Empty Result',
+            message: 'The input does not match any of the records.',
+          ),
+        ),
+      );
+    }
+    return Expanded(
+      child: ListView.separated(
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Container();
+          }
+          if (index == ownRecordList.length + 1) return Container();
+          return UserRecord(record: ownRecordList[index - 1]);
+        },
+        itemCount: ownRecordList.length + 2,
+        separatorBuilder: (BuildContext context, int index) => Divider(
+          color: Colors.grey,
+          thickness: .2,
+          height: .2,
+        ),
+      ),
+    );
+  }
+}

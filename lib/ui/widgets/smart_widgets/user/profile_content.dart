@@ -59,7 +59,6 @@ class _ProfileContentState extends State<ProfileContent> {
           ),
           OwnPostListBuilder(
             ownRecordList: widget.userRecordList,
-            profile: widget.profile,
           ),
         ],
       ),
@@ -69,13 +68,10 @@ class _ProfileContentState extends State<ProfileContent> {
 class OwnPostListBuilder extends StatelessWidget {
   const OwnPostListBuilder({
     Key key,
-    @required this.profile,
     @required this.ownRecordList,
   }) : super(key: key);
 
   final List<Record> ownRecordList;
-
-  final Profile profile;
 
   @override
   Widget build(BuildContext context) {
