@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:knowyourplate/model/record.dart';
-import 'package:knowyourplate/services/functional_services/database_service.dart';
 import 'package:knowyourplate/services/state_services/current_record_service.dart';
 import 'package:stacked/stacked.dart';
 

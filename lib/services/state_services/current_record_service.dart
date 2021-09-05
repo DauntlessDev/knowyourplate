@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:knowyourplate/model/record.dart';
-import 'package:knowyourplate/model/user.dart';
 
 class CurrentRecordService extends ChangeNotifier {
   CurrentRecordService._();
