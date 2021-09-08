@@ -8,6 +8,7 @@ class Profile {
   final String displayName;
   final String photoUrl;
   final String occupation;
+  final String familyHealthHistory;
   final int records;
   final List<String> caseSearch;
 
@@ -18,6 +19,7 @@ class Profile {
     @required this.photoUrl,
     @required this.records,
     @required this.occupation,
+    @required this.familyHealthHistory,
     @required this.caseSearch,
   });
 
@@ -28,6 +30,7 @@ class Profile {
     String photoUrl,
     int records,
     String occupation,
+    String familyHealthHistory,
     List<String> caseSearch,
   }) {
     return Profile(
@@ -37,6 +40,7 @@ class Profile {
       photoUrl: photoUrl ?? this.photoUrl,
       records: records ?? this.records,
       occupation: occupation ?? this.occupation,
+      familyHealthHistory: familyHealthHistory ?? this.familyHealthHistory,
       caseSearch: caseSearch ?? this.caseSearch,
     );
   }
@@ -49,6 +53,7 @@ class Profile {
       'photoUrl': photoUrl,
       'records': records,
       'occupation': occupation,
+      'familyHealthHistory': familyHealthHistory,
       'caseSearch': caseSearch,
     };
   }
@@ -63,6 +68,7 @@ class Profile {
       photoUrl: map['photoUrl'],
       records: map['records'],
       occupation: map['occupation'],
+      familyHealthHistory: map['familyHealthHistory'],
       caseSearch: List<String>.from(map['caseSearch']),
     );
   }
@@ -73,7 +79,7 @@ class Profile {
 
   @override
   String toString() {
-    return 'Profile(uid: $uid, email: $email, displayName: $displayName, photoUrl: $photoUrl, records: $records, occupation: $occupation, caseSearch: $caseSearch)';
+    return 'Profile(uid: $uid, email: $email, displayName: $displayName, photoUrl: $photoUrl, records: $records, occupation: $occupation, familyHealthHistory: $familyHealthHistory, caseSearch: $caseSearch)';
   }
 
   @override
@@ -87,6 +93,7 @@ class Profile {
         o.photoUrl == photoUrl &&
         o.records == records &&
         o.occupation == occupation &&
+        o.familyHealthHistory == familyHealthHistory &&
         listEquals(o.caseSearch, caseSearch);
   }
 
@@ -98,6 +105,7 @@ class Profile {
         photoUrl.hashCode ^
         records.hashCode ^
         occupation.hashCode ^
+        familyHealthHistory.hashCode ^
         caseSearch.hashCode;
   }
 }

@@ -44,6 +44,8 @@ class _MainContent extends ViewModelWidget<UserProfileViewModel> {
             photoUrl: '',
             records: model.profile.records,
             uid: '12',
+            occupation: model.profile.occupation,
+            familyHealthHistory: model.profile.familyHealthHistory,
             caseSearch: model.profile.caseSearch,
           ),
         ));

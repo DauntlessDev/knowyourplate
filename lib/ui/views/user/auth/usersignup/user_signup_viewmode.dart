@@ -80,7 +80,8 @@ class UserSignupViewModel extends BaseViewModel {
             displayName: _displayName,
             caseSearch: setSearchParam(_displayName.toLowerCase()),
             records: 0,
-            occupation: '',
+            occupation: _occupation,
+            familyHealthHistory: _familyHealthHistory,
           ),
         );
         clearInputs();

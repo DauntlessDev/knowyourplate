@@ -53,6 +53,8 @@ class UserProfileViewModel extends StreamViewModel<Profile> {
             displayName: '',
             email: '',
             records: 0,
+            familyHealthHistory: '',
+            occupation: '',
           )
         : Profile(
             uid: data.uid,
@@ -61,6 +63,8 @@ class UserProfileViewModel extends StreamViewModel<Profile> {
             email: data.email,
             displayName: data.displayName,
             records: data.records,
+            familyHealthHistory: data.familyHealthHistory,
+            occupation: data.occupation,
           );
   }
 }

@@ -44,6 +44,8 @@ class _MainContent extends ViewModelWidget<UserStatsViewModel> {
           records: 3,
           uid: '12',
           caseSearch: ['y', 'ye', 'yes'],
+          familyHealthHistory: 'Diabetes Asthma',
+          occupation: 'Software Engineer',
         ),
         userRecordList: [],
       ),
