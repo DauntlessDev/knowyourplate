@@ -7,16 +7,19 @@ class Profile {
   final String email;
   final String displayName;
   final String photoUrl;
+  final String occupation;
   final int records;
   final List<String> caseSearch;
 
-  Profile(
-      {@required this.uid,
-      @required this.email,
-      @required this.displayName,
-      @required this.photoUrl,
-      @required this.records,
-    @required this.caseSearch,});
+  Profile({
+    @required this.uid,
+    @required this.email,
+    @required this.displayName,
+    @required this.photoUrl,
+    @required this.records,
+    @required this.occupation,
+    @required this.caseSearch,
+  });
 
   Profile copyWith({
     String uid,
@@ -24,6 +27,7 @@ class Profile {
     String displayName,
     String photoUrl,
     int records,
+    String occupation,
     List<String> caseSearch,
   }) {
     return Profile(
@@ -32,6 +36,7 @@ class Profile {
       displayName: displayName ?? this.displayName,
       photoUrl: photoUrl ?? this.photoUrl,
       records: records ?? this.records,
+      occupation: occupation ?? this.occupation,
       caseSearch: caseSearch ?? this.caseSearch,
     );
   }
@@ -43,6 +48,7 @@ class Profile {
       'displayName': displayName,
       'photoUrl': photoUrl,
       'records': records,
+      'occupation': occupation,
       'caseSearch': caseSearch,
     };
   }
@@ -56,6 +62,7 @@ class Profile {
       displayName: map['displayName'],
       photoUrl: map['photoUrl'],
       records: map['records'],
+      occupation: map['occupation'],
       caseSearch: List<String>.from(map['caseSearch']),
     );
   }
@@ -66,7 +73,7 @@ class Profile {
 
   @override
   String toString() {
-    return 'Profile(uid: $uid, email: $email, displayName: $displayName, photoUrl: $photoUrl, records: $records, caseSearch: $caseSearch)';
+    return 'Profile(uid: $uid, email: $email, displayName: $displayName, photoUrl: $photoUrl, records: $records, occupation: $occupation, caseSearch: $caseSearch)';
   }
 
   @override
@@ -79,6 +86,7 @@ class Profile {
         o.displayName == displayName &&
         o.photoUrl == photoUrl &&
         o.records == records &&
+        o.occupation == occupation &&
         listEquals(o.caseSearch, caseSearch);
   }
 
@@ -89,6 +97,7 @@ class Profile {
         displayName.hashCode ^
         photoUrl.hashCode ^
         records.hashCode ^
+        occupation.hashCode ^
         caseSearch.hashCode;
   }
 }
