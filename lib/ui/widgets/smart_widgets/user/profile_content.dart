@@ -143,6 +143,17 @@ class _ProfileHeader extends StatelessWidget {
                 child: Text(profile.email,
                     style: TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
               ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text('Occupation: ${profile.occupation[0].toUpperCase()}${profile.occupation.substring(1)}',
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text('History: ${profile.familyHealthHistory}',
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
+              ),
             ],
           )
         ],
