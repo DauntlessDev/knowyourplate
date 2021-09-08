@@ -10,16 +10,22 @@ class UserSignupViewModel extends BaseViewModel {
   final _database = DatabaseService.instance;
 
   String _displayName = "";
+  String _occupation = "";
+  String _familyHealthHistory = "";
   String _email = "";
   String _password = "";
   String _confirmPassword = "";
 
   String get displayName => _displayName;
+  String get occupation => _occupation;
+  String get familyHealthHistory => _familyHealthHistory;
   String get email => _email;
   String get password => _password;
   String get confirmPassword => _confirmPassword;
 
   void setDisplayName(String input) => _displayName = input;
+  void setOccupation(String input) => _displayName = input;
+  void setfamilyHealthHistory(String input) => _displayName = input;
   void setEmail(String input) => _email = input;
   void setPassword(String input) => _password = input;
   void setConfirmPassword(String input) => _confirmPassword = input;
@@ -29,12 +35,16 @@ class UserSignupViewModel extends BaseViewModel {
     _email = "";
     _password = "";
     _confirmPassword = "";
+    _occupation = "";
+    _familyHealthHistory = "";
   }
 
   Future<bool> signUpWithEmail() async {
     try {
       if (_displayName.isEmpty ||
           _email.isEmpty ||
+          _occupation.isEmpty ||
+          _familyHealthHistory.isEmpty ||
           _password.isEmpty ||
           _confirmPassword.isEmpty) {
         throw PlatformException(
@@ -70,6 +80,7 @@ class UserSignupViewModel extends BaseViewModel {
             displayName: _displayName,
             caseSearch: setSearchParam(_displayName.toLowerCase()),
             records: 0,
+            occupation: '',
           ),
         );
         clearInputs();
