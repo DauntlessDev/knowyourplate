@@ -24,8 +24,8 @@ class UserSignupViewModel extends BaseViewModel {
   String get confirmPassword => _confirmPassword;
 
   void setDisplayName(String input) => _displayName = input;
-  void setOccupation(String input) => _displayName = input;
-  void setfamilyHealthHistory(String input) => _displayName = input;
+  void setOccupation(String input) => _occupation = input;
+  void setfamilyHealthHistory(String input) => _familyHealthHistory = input;
   void setEmail(String input) => _email = input;
   void setPassword(String input) => _password = input;
   void setConfirmPassword(String input) => _confirmPassword = input;

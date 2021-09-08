@@ -100,6 +100,8 @@ class _SignupForm extends ViewModelWidget<UserSignupViewModel> {
     Key key,
   }) : super(key: key, reactive: false);
   final FocusNode _displayFocusNode = FocusNode();
+  final FocusNode _occupationFocusNode = FocusNode();
+  final FocusNode _familyHistoryFocusNode = FocusNode();
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
   final FocusNode _confirmPasswordFocusNode = FocusNode();
@@ -114,9 +116,28 @@ class _SignupForm extends ViewModelWidget<UserSignupViewModel> {
             hintString: 'Enter full name',
             onChanged: model.setDisplayName,
             focusNode: _displayFocusNode,
-            onEditingComplete: _emailFocusNode.requestFocus,
+            onEditingComplete: _occupationFocusNode.requestFocus,
             textInputAction: TextInputAction.next,
             iconData: MdiIcons.accountBox,
+          ),
+          AuthTextFormField(
+            initialValue: model.occupation,
+            hintString: 'Enter occupation (Must be correct spelling)',
+            onChanged: model.setOccupation,
+            focusNode: _occupationFocusNode,
+            onEditingComplete: _familyHistoryFocusNode.requestFocus,
+            textInputAction: TextInputAction.next,
+            iconData: MdiIcons.briefcase,
+          ),
+          AuthTextFormField(
+            initialValue: model.familyHealthHistory,
+            hintString:
+                'Enter family health history and seperate by space (Must be correct spelling)',
+            onChanged: model.setfamilyHealthHistory,
+            focusNode: _familyHistoryFocusNode,
+            onEditingComplete: _emailFocusNode.requestFocus,
+            textInputAction: TextInputAction.next,
+            iconData: MdiIcons.familyTree,
           ),
           AuthTextFormField(
             initialValue: model.email,
