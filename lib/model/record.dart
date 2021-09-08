@@ -8,12 +8,18 @@ class Record {
   String title;
   String pictureUrl;
   String date;
+  int carbs;
+  int protein;
+  int fats;
   Record({
     @required this.recordId,
     @required this.userEmail,
     @required this.title,
     @required this.pictureUrl,
     @required this.date,
+    @required this.carbs,
+    @required this.protein,
+    @required this.fats,
   });
 
   Record copyWith({
@@ -22,6 +28,9 @@ class Record {
     String title,
     String pictureUrl,
     String date,
+    int carbs,
+    int protein,
+    int fats,
   }) {
     return Record(
       recordId: recordId ?? this.recordId,
@@ -29,6 +38,9 @@ class Record {
       title: title ?? this.title,
       pictureUrl: pictureUrl ?? this.pictureUrl,
       date: date ?? this.date,
+      carbs: carbs ?? this.carbs,
+      protein: protein ?? this.protein,
+      fats: fats ?? this.fats,
     );
   }
 
@@ -39,6 +51,9 @@ class Record {
       'title': title,
       'pictureUrl': pictureUrl,
       'date': date,
+      'carbs': carbs,
+      'protein': protein,
+      'fats': fats,
     };
   }
 
@@ -51,6 +66,9 @@ class Record {
       title: map['title'],
       pictureUrl: map['pictureUrl'],
       date: map['date'],
+      carbs: map['carbs'],
+      protein: map['protein'],
+      fats: map['fats'],
     );
   }
 
@@ -60,7 +78,7 @@ class Record {
 
   @override
   String toString() {
-    return 'Post(recordId: $recordId, userEmail: $userEmail, title: $title, pictureUrl: $pictureUrl, date: $date)';
+    return 'Post(recordId: $recordId, userEmail: $userEmail, title: $title, pictureUrl: $pictureUrl, date: $date, carbs: $carbs, protein: $protein, fats: $fats)';
   }
 
   @override
@@ -72,7 +90,10 @@ class Record {
         o.userEmail == userEmail &&
         o.title == title &&
         o.pictureUrl == pictureUrl &&
-        o.date == date;
+        o.date == date &&
+        o.carbs == carbs &&
+        o.protein == protein &&
+        o.fats == fats;
   }
 
   @override
@@ -81,6 +102,9 @@ class Record {
         userEmail.hashCode ^
         title.hashCode ^
         pictureUrl.hashCode ^
-        date.hashCode;
+        date.hashCode ^
+        carbs.hashCode ^
+        protein.hashCode ^
+        fats.hashCode;
   }
 }
