@@ -71,6 +71,9 @@ class RecordViewModel extends BaseViewModel {
         title: _title,
         pictureUrl: _pictureDownloadUrl,
         date: date,
+        carbs: 5,
+        protein: 5,
+        fats: 5,
       ));
 
       Profile currentProfileInfo;
