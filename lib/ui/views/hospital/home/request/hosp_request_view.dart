@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 
 import 'hosp_request_viewmodel.dart';
 
-class UserRequestView extends StatelessWidget {
+class HospRequestView extends StatelessWidget {
   static final navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
@@ -117,9 +117,7 @@ class _HospRequest extends ViewModelWidget<HospRequestViewModel> {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    email.length < 28
-                        ? email
-                        : '${email.substring(0, 25)}...',
+                    email.length < 28 ? email : '${email.substring(0, 25)}...',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 11,
@@ -138,8 +136,8 @@ class _HospRequest extends ViewModelWidget<HospRequestViewModel> {
                           child: TextButton(
                             onPressed: () {},
                             style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.grey[400])),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.grey[400])),
                             child: Icon(MdiIcons.cancel,
                                 size: 15, color: Colors.white),
                           ),
@@ -151,8 +149,8 @@ class _HospRequest extends ViewModelWidget<HospRequestViewModel> {
                           child: TextButton(
                             onPressed: () {},
                             style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.lightGreen)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.lightGreen)),
                             child: Icon(
                               MdiIcons.check,
                               size: 15,
