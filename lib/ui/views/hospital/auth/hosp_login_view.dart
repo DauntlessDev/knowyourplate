@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:knowyourplate/ui/views/user/auth/usersignup/user_signup_view.dart';
+import 'package:knowyourplate/ui/views/hospital/auth/hosp_signup_view.dart';
 import 'package:knowyourplate/ui/views/user/auth/userlogin/user_login_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';
 import 'package:knowyourplate/ui/widgets/roundedbutton.dart';
@@ -84,7 +83,7 @@ class _MainContent extends ViewModelWidget<UserLoginViewModel> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UserSignupView()),
+                  MaterialPageRoute(builder: (context) => HospitalSignupView()),
                 );
               },
             ),
