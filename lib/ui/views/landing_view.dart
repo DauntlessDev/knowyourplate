@@ -13,9 +13,9 @@ class LandingView extends StatelessWidget {
     return ViewModelBuilder<LandingViewModel>.reactive(
       viewModelBuilder: () => LandingViewModel(),
       builder: (context, model, child) =>
-          // model.user == null ? GeneralLoginPage() : UserHomeView(),
-          // model.user == null ? HospHomeView() : HospHomeView(),
-          model.user == null ? HospitalLoginView() : HospitalLoginView(),
+          model.user == null ? GeneralLoginPage() : UserHomeView(),
+      // model.user == null ? HospHomeView() : HospHomeView(),
+      // model.user == null ? HospitalLoginView() : HospitalLoginView(),
     );
   }
 }
