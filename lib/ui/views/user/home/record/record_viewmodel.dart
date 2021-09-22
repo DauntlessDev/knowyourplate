@@ -98,6 +98,7 @@ class RecordViewModel extends BaseViewModel {
   uploadFileToApi(File imageFile) async {
     // open a bytestream
     var stream =
+        // ignore: deprecated_member_use
         new http.ByteStream(DelegatingStream.typed(imageFile.openRead()));
     // get file length
     var length = await imageFile.length();

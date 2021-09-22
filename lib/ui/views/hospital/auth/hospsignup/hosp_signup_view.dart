@@ -7,11 +7,13 @@ import 'package:knowyourplate/ui/widgets/top_background.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:stacked/stacked.dart';
 
+import 'hosp_signup_viewmodel.dart';
+
 class HospitalSignupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<UserSignupViewModel>.reactive(
-      viewModelBuilder: () => UserSignupViewModel(),
+    return ViewModelBuilder<HospSignupViewModel>.reactive(
+      viewModelBuilder: () => HospSignupViewModel(),
       builder: (context, model, child) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -36,13 +38,13 @@ class HospitalSignupView extends StatelessWidget {
   }
 }
 
-class _MainContent extends ViewModelWidget<UserSignupViewModel> {
+class _MainContent extends ViewModelWidget<HospSignupViewModel> {
   const _MainContent({
     Key key,
   }) : super(key: key, reactive: false);
 
   @override
-  Widget build(BuildContext context, UserSignupViewModel model) {
+  Widget build(BuildContext context, HospSignupViewModel model) {
     bool result;
     return AnimatedPadding(
       padding: EdgeInsets.only(
@@ -95,45 +97,45 @@ class _MainContent extends ViewModelWidget<UserSignupViewModel> {
   }
 }
 
-class _SignupForm extends ViewModelWidget<UserSignupViewModel> {
+class _SignupForm extends ViewModelWidget<HospSignupViewModel> {
   _SignupForm({
     Key key,
   }) : super(key: key, reactive: false);
-  final FocusNode _displayFocusNode = FocusNode();
-  final FocusNode _occupationFocusNode = FocusNode();
-  final FocusNode _familyHistoryFocusNode = FocusNode();
+  final FocusNode _nameFocusNode = FocusNode();
+  final FocusNode _adminNameFocusNode = FocusNode();
+  final FocusNode _addressFocusNode = FocusNode();
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
   final FocusNode _confirmPasswordFocusNode = FocusNode();
 
   @override
-  Widget build(BuildContext context, UserSignupViewModel model) {
+  Widget build(BuildContext context, HospSignupViewModel model) {
     return Form(
       child: Column(
         children: [
           AuthTextFormField(
-            initialValue: model.displayName,
+            initialValue: model.hospName,
             hintString: 'Enter hospital name',
-            onChanged: model.setDisplayName,
-            focusNode: _displayFocusNode,
-            onEditingComplete: _occupationFocusNode.requestFocus,
+            onChanged: model.setHospName,
+            focusNode: _nameFocusNode,
+            onEditingComplete: _adminNameFocusNode.requestFocus,
             textInputAction: TextInputAction.next,
             iconData: MdiIcons.accountBox,
           ),
           AuthTextFormField(
-            initialValue: model.occupation,
+            initialValue: model.adminName,
             hintString: 'Enter name of the admin ',
-            onChanged: model.setOccupation,
-            focusNode: _occupationFocusNode,
-            onEditingComplete: _familyHistoryFocusNode.requestFocus,
+            onChanged: model.setAdminName,
+            focusNode: _adminNameFocusNode,
+            onEditingComplete: _addressFocusNode.requestFocus,
             textInputAction: TextInputAction.next,
             iconData: MdiIcons.briefcase,
           ),
           AuthTextFormField(
-            initialValue: model.familyHealthHistory,
+            initialValue: model.address,
             hintString: 'Enter hospital address',
-            onChanged: model.setfamilyHealthHistory,
-            focusNode: _familyHistoryFocusNode,
+            onChanged: model.setAddress,
+            focusNode: _addressFocusNode,
             onEditingComplete: _emailFocusNode.requestFocus,
             textInputAction: TextInputAction.next,
             iconData: MdiIcons.familyTree,

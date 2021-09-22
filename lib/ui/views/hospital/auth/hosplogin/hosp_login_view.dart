@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourplate/ui/views/hospital/auth/hosp_signup_view.dart';
+import 'package:knowyourplate/ui/views/hospital/auth/hospsignup/hosp_signup_view.dart';
 import 'package:knowyourplate/ui/views/user/auth/userlogin/user_login_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';
 import 'package:knowyourplate/ui/widgets/roundedbutton.dart';

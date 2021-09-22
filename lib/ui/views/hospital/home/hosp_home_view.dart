@@ -1,7 +1,6 @@
 //view class
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:knowyourplate/ui/views/user/home/record/record_view.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:stacked/stacked.dart';
 
@@ -52,6 +51,7 @@ class _CupertinoHomeScaffold extends StatelessWidget {
       @required this.onSelectTab,
       @required this.widgetBuilders,
       @required this.navigatorKey,
+      // ignore: unused_element
       CupertinoTabBar builder})
       : super(key: key);
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:knowyourplate/model/hospital.dart';
 // import 'package:knowyourplate/model/message.dart';
 // import 'package:knowyourplate/model/post.dart';
 import 'package:knowyourplate/model/profile.dart';
@@ -38,6 +39,13 @@ class DatabaseService {
     await _service.setData(
       path: APIPath.userInfo(profile.uid),
       data: profile.toMap(),
+    );
+  }
+
+  Future<void> setHospital(Hospital hospital) async {
+    await _service.setData(
+      path: APIPath.hospitalInfo(hospital.uid),
+      data: hospital.toMap(),
     );
   }
 

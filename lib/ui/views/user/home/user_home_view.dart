@@ -52,6 +52,7 @@ class _CupertinoHomeScaffold extends StatelessWidget {
       @required this.onSelectTab,
       @required this.widgetBuilders,
       @required this.navigatorKey,
+      // ignore: unused_element
       CupertinoTabBar builder})
       : super(key: key);
 
