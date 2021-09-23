@@ -27,24 +27,21 @@ class GroupedBarChart extends StatelessWidget {
   /// Create series list with multiple series
   static List<charts.Series<Ordinalamount, String>> _createSampleData() {
     final desktopamountData = [
-      new Ordinalamount('2014', 5),
-      new Ordinalamount('2015', 25),
-      new Ordinalamount('2016', 100),
-      new Ordinalamount('2017', 75),
+      new Ordinalamount('fats', 5),
+      new Ordinalamount('protein', 25),
+      new Ordinalamount('carbs', 100),
     ];
 
     final tableamountData = [
-      new Ordinalamount('2014', 25),
-      new Ordinalamount('2015', 50),
-      new Ordinalamount('2016', 10),
-      new Ordinalamount('2017', 20),
+      new Ordinalamount('fats', 15),
+      new Ordinalamount('protein', 25),
+      new Ordinalamount('carbs', 80),
     ];
 
     final mobileamountData = [
-      new Ordinalamount('2014', 10),
-      new Ordinalamount('2015', 15),
-      new Ordinalamount('2016', 50),
-      new Ordinalamount('2017', 45),
+      new Ordinalamount('fats', 20),
+      new Ordinalamount('protein', 20),
+      new Ordinalamount('carbs', 90),
     ];
 
     return [
