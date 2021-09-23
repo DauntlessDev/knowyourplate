@@ -23,8 +23,6 @@ class ProfileContent extends StatefulWidget {
 class _ProfileContentState extends State<ProfileContent> {
   @override
   void dispose() {
-    // final _visitProfile = locator<VisitProfileService>();
-    // _visitProfile.removeVisitProfileEmail();
     super.dispose();
   }
 

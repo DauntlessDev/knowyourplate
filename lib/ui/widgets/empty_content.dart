@@ -20,7 +20,6 @@ class EmptyContent extends StatelessWidget {
             message,
             style: TextStyle(
               fontSize: 11,
-              // fontWeight: FontWeight.bold,
             ),
           ),
         ],

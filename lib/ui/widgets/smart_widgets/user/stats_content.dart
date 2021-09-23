@@ -21,8 +21,6 @@ class StatsContent extends StatefulWidget {
 class _StatsContentState extends State<StatsContent> {
   @override
   void dispose() {
-    // final _visitProfile = locator<VisitProfileService>();
-    // _visitProfile.removeVisitProfileEmail();
     super.dispose();
   }
 

@@ -1,14 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:knowyourplate/model/hospital.dart';
-// import 'package:knowyourplate/model/message.dart';
-// import 'package:knowyourplate/model/post.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/services/state_services/current_user_service.dart';
-// import 'package:knowyourplate/services/state_services/current_chatroom_service.dart';
-// import 'package:knowyourplate/services/state_services/current_user_service.dart';
 
 import 'api_path.dart';
 import 'firebase_service.dart';
@@ -42,12 +37,6 @@ class DatabaseService {
     );
   }
 
-  Future<void> setHospital(Hospital hospital) async {
-    await _service.setData(
-      path: APIPath.hospitalInfo(hospital.uid),
-      data: hospital.toMap(),
-    );
-  }
 
   Stream<Profile> profileStream() {
     String _uid = _user.uid;

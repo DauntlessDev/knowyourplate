@@ -8,7 +8,6 @@ import 'package:knowyourplate/services/state_services/current_user_service.dart'
 class LandingViewModel extends StreamViewModel<User> {
   final _auth = AuthenticationService.instance;
   final _user = CurrentUserService.instance;
-  // final _visitProfile = locator<VisitProfileService>();
 
   User get user => data;
   Stream<User> onAuthStateChanged() {
@@ -16,7 +15,6 @@ class LandingViewModel extends StreamViewModel<User> {
       try {
         if (event != null) {
           _user.updateCurrentUserInfo(event);
-          // _visitProfile.checkUserFollowing();
         }
       } on PlatformException catch (e) {
         print('landing page updating user field: ${e.message}');

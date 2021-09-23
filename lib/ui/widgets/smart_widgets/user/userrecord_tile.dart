@@ -40,11 +40,6 @@ class UserRecord extends StatelessWidget {
                   height: 50,
                   fit: BoxFit.fitHeight,
                 ),
-                // Container(
-                //   color: Colors.lightGreenAccent,
-                //   width: 50,
-                //   height: 50,
-                // ),
                 SizedBox(width: 15),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,

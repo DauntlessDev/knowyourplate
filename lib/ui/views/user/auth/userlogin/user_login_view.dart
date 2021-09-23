@@ -8,7 +8,6 @@ import 'package:knowyourplate/ui/widgets/top_background.dart';
 import 'package:stacked/stacked.dart';
 
 class UserLoginView extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<UserLoginViewModel>.reactive(
