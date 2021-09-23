@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:knowyourplate/model/feedback.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/user.dart';
 import 'package:knowyourplate/services/functional_services/auth_service.dart';
@@ -6,6 +7,7 @@ import 'package:knowyourplate/services/functional_services/database_service.dart
 import 'package:stacked/stacked.dart';
 
 class UserSignupViewModel extends BaseViewModel {
+  Feedback result;
   final _auth = AuthenticationService.instance;
   final _database = DatabaseService.instance;
 
@@ -39,7 +41,7 @@ class UserSignupViewModel extends BaseViewModel {
     _familyHealthHistory = "";
   }
 
-  Future<bool> signUpWithEmail() async {
+  Future<Feedback> signUpWithEmail() async {
     try {
       if (_displayName.isEmpty ||
           _email.isEmpty ||
@@ -87,13 +89,13 @@ class UserSignupViewModel extends BaseViewModel {
         clearInputs();
         setBusy(false);
 
-        return true;
+        return Feedback(
+            title: 'Sign-up Success', details: 'You have created an account');
         // _navigation.back();
       }
-    } on PlatformException {
+    } on PlatformException catch(e){
       setBusy(false);
-
-      return false;
+      return Feedback(title: 'Sign-up Failed', details: e.message);
       // await _dialog.showDialog(
       //   title: 'Sign-up Failed',
       //   description: e.message,

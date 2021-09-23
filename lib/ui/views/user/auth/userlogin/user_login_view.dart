@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourplate/model/feedback.dart';
 import 'package:knowyourplate/ui/views/user/auth/usersignup/user_signup_view.dart';
 import 'package:knowyourplate/ui/views/user/auth/userlogin/user_login_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';
@@ -6,24 +7,28 @@ import 'package:knowyourplate/ui/widgets/roundedbutton.dart';
 import 'package:knowyourplate/ui/widgets/tappable_richtext.dart';
 import 'package:knowyourplate/ui/widgets/top_background.dart';
 import 'package:stacked/stacked.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class UserLoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<UserLoginViewModel>.reactive(
       viewModelBuilder: () => UserLoginViewModel(),
-      builder: (context, model, child) => Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Stack(
-          children: [
-            TopBackground(),
-            CustomScrollView(
-              slivers: [
-                SliverFillRemaining(
-                    hasScrollBody: false, child: _MainContent()),
-              ],
-            ),
-          ],
+      builder: (context, model, child) => ModalProgressHUD(
+        inAsyncCall: model.isBusy,
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Stack(
+            children: [
+              TopBackground(),
+              CustomScrollView(
+                slivers: [
+                  SliverFillRemaining(
+                      hasScrollBody: false, child: _MainContent()),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -39,7 +44,6 @@ class _MainContent extends ViewModelWidget<UserLoginViewModel> {
 
   @override
   Widget build(BuildContext context, UserLoginViewModel model) {
-    bool result;
     return AnimatedPadding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -62,13 +66,36 @@ class _MainContent extends ViewModelWidget<UserLoginViewModel> {
             const SizedBox(height: 20),
             RoundedButton(
               onPressed: () async => {
-                result = await model.signInWithEmail(),
-                if (result)
+                model.result = await model.signInWithEmail(),
+                if (model.result.title == 'Login Success')
                   {
-                    Navigator.of(context).pop(),
                   }
                 else
                   {
+                    showDialog<void>(
+                      context: context,
+                      barrierDismissible: false, // user must tap button!
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(model.result.title),
+                          content: SingleChildScrollView(
+                            child: ListBody(
+                              children: <Widget>[
+                                Text(model.result.details),
+                              ],
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('Confirm'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                     print('error in login'),
                   }
               },
