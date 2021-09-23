@@ -10,4 +10,4 @@ class UserHomeViewModel extends BaseViewModel {
   }
 }
 
-enum TabItem { profile, stats, search, request }
+enum TabItem { profile, stats, search }
