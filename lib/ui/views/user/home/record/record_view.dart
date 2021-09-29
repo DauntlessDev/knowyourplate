@@ -1,31 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/record/record_viewmodel.dart';
-import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';
 import 'package:knowyourplate/ui/widgets/roundedbutton.dart';
+import 'package:knowyourplate/ui/widgets/smart_widgets/user/record_content.dart';
+import 'package:knowyourplate/ui/widgets/smart_widgets/user/record_maincontent.dart';
 import 'package:stacked/stacked.dart';
 
 class RecordView extends StatelessWidget {
-  // This widget is the root of your application.@override
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<RecordViewModel>.reactive(
       viewModelBuilder: () => RecordViewModel(),
+      onModelReady: (model) => model.getCurrentFoodInfo(),
       builder: (context, model, child) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            title: Text('Food Information'),
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add_circle_outline),
+            onPressed: () async => {
+              model.result = await model.proceedRecord(),
+              // recordResult = await model.proceedRecord();
+              if (model.result.title == 'Success')
+                {
+                  Navigator.of(context).popUntil((route) => route.isFirst),
+                }
+              else
+                {
+                  showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(model.result.title),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(model.result.details),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Confirm'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                  print('error in adding record'),
+                },
+            },
+          ),
           body: SafeArea(
-            child: Stack(
-              children: [
-                CustomScrollView(
-                  slivers: [
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: const _MainContent(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            child: _MainContent(),
           ),
         );
       },
@@ -40,93 +72,6 @@ class _MainContent extends ViewModelWidget<RecordViewModel> {
 
   @override
   Widget build(BuildContext context, RecordViewModel model) {
-    bool imageResult;
-    bool recordResult;
-    return AnimatedPadding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
-      ),
-      duration: Duration(milliseconds: 220),
-      child: Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: Column(
-          children: <Widget>[
-            Spacer(flex: 10),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Add new record!',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const Spacer(flex: 1),
-            _RecordForm(),
-            const SizedBox(height: 20),
-            RoundedButton(
-              onPressed: () async => {
-                await model.addImage(),
-                // imageResult = await model.addImage();
-                imageResult = true,
-                if (imageResult)
-                  {
-                    print('success in adding image'),
-                  }
-                else
-                  {
-                    print('error in adding image'),
-                  }
-              },
-              text: 'Add photo',
-              color: Colors.lightGreenAccent,
-            ),
-            RoundedButton(
-              onPressed: () async => {
-                await model.proceedRecord(),
-                // recordResult = await model.proceedRecord();
-                recordResult = true,
-                if (recordResult)
-                  {
-                    Navigator.of(context).popUntil((route) => route.isFirst),
-                  }
-                else
-                  {
-                    print('error in adding record'),
-                  }
-              },
-              text: 'Add Record',
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            const Spacer(flex: 4),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _RecordForm extends ViewModelWidget<RecordViewModel> {
-  _RecordForm({
-    Key key,
-  }) : super(key: key, reactive: false);
-  final FocusNode _titleFocusNode = FocusNode();
-
-  @override
-  Widget build(BuildContext context, RecordViewModel model) {
-    return Form(
-      child: Column(
-        children: [
-          AuthTextFormField(
-            initialValue: model.title,
-            hintString: 'Enter title',
-            keyBoardType: TextInputType.text,
-            onChanged: model.setTitle,
-            focusNode: _titleFocusNode,
-            textInputAction: TextInputAction.next,
-            iconData: Icons.person,
-            onEditingComplete: null,
-          ),
-        ],
-      ),
-    );
+    return RecordMainContent(record: model.foodInfo);
   }
 }

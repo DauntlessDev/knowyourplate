@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+import 'package:knowyourplate/model/ingredient.dart';
 import 'package:meta/meta.dart';
 
 class Record {
@@ -11,6 +13,7 @@ class Record {
   int carbs;
   int protein;
   int fats;
+  List<Ingredient> ingredients;
   Record({
     @required this.recordId,
     @required this.userEmail,
@@ -20,6 +23,7 @@ class Record {
     @required this.carbs,
     @required this.protein,
     @required this.fats,
+    @required this.ingredients,
   });
 
   Record copyWith({
@@ -31,6 +35,7 @@ class Record {
     int carbs,
     int protein,
     int fats,
+    List<Ingredient> ingredients,
   }) {
     return Record(
       recordId: recordId ?? this.recordId,
@@ -41,6 +46,7 @@ class Record {
       carbs: carbs ?? this.carbs,
       protein: protein ?? this.protein,
       fats: fats ?? this.fats,
+      ingredients: ingredients ?? this.ingredients,
     );
   }
 
@@ -54,6 +60,7 @@ class Record {
       'carbs': carbs,
       'protein': protein,
       'fats': fats,
+      'ingredients': ingredients,
     };
   }
 
@@ -69,6 +76,7 @@ class Record {
       carbs: map['carbs'],
       protein: map['protein'],
       fats: map['fats'],
+      ingredients: List<Ingredient>.from(map['ingredients']),
     );
   }
 
@@ -78,7 +86,7 @@ class Record {
 
   @override
   String toString() {
-    return 'Post(recordId: $recordId, userEmail: $userEmail, title: $title, pictureUrl: $pictureUrl, date: $date, carbs: $carbs, protein: $protein, fats: $fats)';
+    return 'Post(recordId: $recordId, userEmail: $userEmail, title: $title, pictureUrl: $pictureUrl, date: $date, carbs: $carbs, protein: $protein, fats: $fats,ingredients: $ingredients )';
   }
 
   @override
@@ -93,7 +101,8 @@ class Record {
         o.date == date &&
         o.carbs == carbs &&
         o.protein == protein &&
-        o.fats == fats;
+        o.fats == fats &&
+        listEquals(o.ingredients, ingredients);
   }
 
   @override
@@ -105,6 +114,7 @@ class Record {
         date.hashCode ^
         carbs.hashCode ^
         protein.hashCode ^
-        fats.hashCode;
+        fats.hashCode ^
+        ingredients.hashCode;
   }
 }

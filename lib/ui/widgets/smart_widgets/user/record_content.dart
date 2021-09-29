@@ -1,20 +1,20 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/record.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:knowyourplate/services/state_services/formatter_service.dart';
 
 class RecordContent extends StatelessWidget {
-  const RecordContent({
+  RecordContent({
     Key key,
     @required this.record,
   }) : super(key: key);
 
   final Record record;
+  final _formatter = FormatterService.instance;
 
   @override
   Widget build(BuildContext context) {
     print(record.toString());
-    final _formatter = FormatterService.instance;
     return Scaffold(
       appBar: AppBar(
         title: Text("Record Details"),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourplate/model/feedback.dart';
 import 'package:knowyourplate/ui/views/user/auth/usersignup/user_signup_view.dart';
 import 'package:knowyourplate/ui/views/user/auth/userlogin/user_login_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/auth_textformfield.dart';

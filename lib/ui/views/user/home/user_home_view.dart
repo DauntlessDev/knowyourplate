@@ -21,11 +21,44 @@ class UserHomeView extends StatelessWidget {
           child: FloatingActionButton(
             backgroundColor: Colors.green,
             child: Icon(Icons.receipt_rounded),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RecordView()),
-              );
+            onPressed: () async => {
+              model.result = await model.captureImage(),
+              print(model.result),
+              if (model.result.title == "Success")
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RecordView()),
+                  ),
+                }
+              else
+                {
+                  showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(model.result.title),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(model.result.details),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Confirm'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                  print('error in adding record'),
+                },
             },
           ),
         ),
