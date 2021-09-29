@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/ui/views/user/home/profile/user_profile_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/profile_content.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
 
 class UserProfileView extends StatelessWidget {
@@ -10,7 +11,14 @@ class UserProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<UserProfileViewModel>.reactive(
-      builder: (context, model, child) => _MainContent(),
+      builder: (context, model, child) => ModalProgressHUD(
+        inAsyncCall:
+            model.isBusy || model.profile == null || model.profile.email == '',
+        child:
+            model.isBusy || model.profile == null || model.profile.email == ''
+                ? Container()
+                : _MainContent(),
+      ),
       viewModelBuilder: () => UserProfileViewModel(),
     );
   }

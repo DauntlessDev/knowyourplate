@@ -7,6 +7,7 @@ import 'package:knowyourplate/ui/views/user/home/search/user_search_view.dart';
 import 'package:knowyourplate/ui/views/user/home/statistics/user_stats_view.dart';
 import 'package:knowyourplate/ui/views/user/home/user_home_viewmodel.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
 
 class UserHomeView extends StatelessWidget {
@@ -15,58 +16,61 @@ class UserHomeView extends StatelessWidget {
     return ViewModelBuilder<UserHomeViewModel>.reactive(
       viewModelBuilder: () => UserHomeViewModel(),
       // onModelReady: (model) => model.initialize(),
-      builder: (context, model, child) => Scaffold(
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 50),
-          child: FloatingActionButton(
-            backgroundColor: Colors.green,
-            child: Icon(Icons.receipt_rounded),
-            onPressed: () async => {
-              model.result = await model.captureImage(),
-              print(model.result),
-              if (model.result.title == "Success")
-                {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RecordView()),
-                  ),
-                }
-              else
-                {
-                  showDialog<void>(
-                    context: context,
-                    barrierDismissible: false, // user must tap button!
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text(model.result.title),
-                        content: SingleChildScrollView(
-                          child: ListBody(
-                            children: <Widget>[
-                              Text(model.result.details),
-                            ],
+      builder: (context, model, child) => ModalProgressHUD(
+        inAsyncCall: model.isBusy,
+        child: Scaffold(
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: FloatingActionButton(
+              backgroundColor: Colors.green,
+              child: Icon(Icons.receipt_rounded),
+              onPressed: () async => {
+                model.result = await model.captureImage(),
+                print(model.result),
+                if (model.result.title == "Success")
+                  {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RecordView()),
+                    ),
+                  }
+                else
+                  {
+                    showDialog<void>(
+                      context: context,
+                      barrierDismissible: false, // user must tap button!
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(model.result.title),
+                          content: SingleChildScrollView(
+                            child: ListBody(
+                              children: <Widget>[
+                                Text(model.result.details),
+                              ],
+                            ),
                           ),
-                        ),
-                        actions: <Widget>[
-                          TextButton(
-                            child: const Text('Confirm'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                  print('error in adding record'),
-                },
-            },
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('Confirm'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    print('error in adding record'),
+                  },
+              },
+            ),
           ),
+          body: _CupertinoHomeScaffold(
+              currentTab: model.currentTab,
+              onSelectTab: model.select,
+              widgetBuilders: _TabItemData.widgetBuilders,
+              navigatorKey: _TabItemData.navigatorKey),
         ),
-        body: _CupertinoHomeScaffold(
-            currentTab: model.currentTab,
-            onSelectTab: model.select,
-            widgetBuilders: _TabItemData.widgetBuilders,
-            navigatorKey: _TabItemData.navigatorKey),
       ),
     );
   }
