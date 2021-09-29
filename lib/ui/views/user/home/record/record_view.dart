@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/record/record_viewmodel.dart';
-import 'package:knowyourplate/ui/widgets/roundedbutton.dart';
-import 'package:knowyourplate/ui/widgets/smart_widgets/user/record_content.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/record_maincontent.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';

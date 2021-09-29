@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
-import 'package:knowyourplate/model/ingredient.dart';
 import 'package:knowyourplate/model/record.dart';
 
 class RecordMainContent extends StatelessWidget {
