@@ -7,10 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
 class FirebaseService {
-  
   FirebaseService._();
   static final instance = FirebaseService._();
-
 
   Future<void> setData({
     @required String path,
@@ -151,7 +149,7 @@ class FirebaseService {
   Future<File> getImage() async {
     ImagePicker _imagePicker = ImagePicker();
     PickedFile pickImage =
-        await _imagePicker.getImage(source: ImageSource.gallery);
+        await _imagePicker.getImage(source: ImageSource.camera);
 
     File image = File(pickImage.path);
     return image;
