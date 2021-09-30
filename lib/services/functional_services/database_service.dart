@@ -37,7 +37,6 @@ class DatabaseService {
     );
   }
 
-
   Stream<Profile> profileStream() {
     String _uid = _user.uid;
     return _service.documentStreamNoID(
@@ -72,12 +71,10 @@ class DatabaseService {
   Stream<List<Record>> specificRecordStream(String email) {
     return _service.collectionStreamNoID(
       path: APIPath.records(),
-      builder: (data) => Record.fromMap(data),
+      builder: (data) => Record.fromJson(data),
       sort: (a, b) => a.date.compareTo(b.date),
       queryBuilder: (query) => query.where('userEmail', isEqualTo: email),
       isReversed: true,
     );
   }
-
-  
 }

@@ -50,6 +50,19 @@ class Record {
     );
   }
 
+  factory Record.fromJson(Map<String, dynamic> json) => Record(
+        recordId: json['recordId'],
+        userEmail: json['userEmail'],
+        title: json['title'],
+        pictureUrl: json['pictureUrl'],
+        date: json['date'],
+        carbs: json['carbs'],
+        protein: json['protein'],
+        fats: json['fats'],
+        ingredients: List<Ingredient>.from(
+            json["ingredients"]?.map((x) => Ingredient.fromJson(x))),
+      );
+
   Map<String, dynamic> toMap() {
     return {
       'recordId': recordId,
@@ -60,29 +73,29 @@ class Record {
       'carbs': carbs,
       'protein': protein,
       'fats': fats,
-      'ingredients': ingredients,
+      "ingredients": List<dynamic>.from(ingredients.map((x) => x.toJson())),
     };
   }
 
-  static Record fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
+  // static Record fromMap(Map<String, dynamic> map) {
+  //   if (map == null) return null;
 
-    return Record(
-      recordId: map['recordId'],
-      userEmail: map['userEmail'],
-      title: map['title'],
-      pictureUrl: map['pictureUrl'],
-      date: map['date'],
-      carbs: map['carbs'],
-      protein: map['protein'],
-      fats: map['fats'],
-      ingredients: List<Ingredient>.from(map['ingredients']),
-    );
-  }
+  //   return Record(
+  //     recordId: map['recordId'],
+  //     userEmail: map['userEmail'],
+  //     title: map['title'],
+  //     pictureUrl: map['pictureUrl'],
+  //     date: map['date'],
+  //     carbs: map['carbs'],
+  //     protein: map['protein'],
+  //     fats: map['fats'],
+  //     ingredients: List<Ingredient>.from(map['ingredients']),
+  //   );
+  // }
 
   String toJson() => json.encode(toMap());
 
-  static Record fromJson(String source) => fromMap(json.decode(source));
+  // static Record fromJson(String source) => fromMap(json.decode(source));
 
   @override
   String toString() {
