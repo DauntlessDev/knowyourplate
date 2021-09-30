@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 
 class Ingredient {
@@ -8,6 +7,5 @@ class Ingredient {
   });
 
   final String name;
-  final int quantity;
-
+  double quantity;
 }

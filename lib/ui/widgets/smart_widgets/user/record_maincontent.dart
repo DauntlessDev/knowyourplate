@@ -29,7 +29,7 @@ class RecordMainContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Carbohydrates: ${record.carbs}"),
+              Text("Carbs: ${record.carbs}"),
               SizedBox(width: 10),
               Text("Protein: ${record.protein}"),
               SizedBox(width: 10),
@@ -37,7 +37,11 @@ class RecordMainContent extends StatelessWidget {
             ],
           ),
           SizedBox(height: 30),
-          Text("Ingredients: ${record.ingredients.toString()}"),
+          Text("Ingredients:"),
+          SizedBox(height: 10),
+          for (var ingredient in record.ingredients)
+            Text(
+                '${ingredient.name[0].toUpperCase()}${ingredient.name.substring(1)} : ${ingredient.quantity}'),
           Spacer(flex: 1),
           Text("Record of ${record.userEmail}"),
           SizedBox(height: 80),

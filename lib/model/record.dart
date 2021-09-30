@@ -10,9 +10,9 @@ class Record {
   String title;
   String pictureUrl;
   String date;
-  int carbs;
-  int protein;
-  int fats;
+  double carbs;
+  double protein;
+  double fats;
   List<Ingredient> ingredients;
   Record({
     @required this.recordId,
@@ -32,9 +32,9 @@ class Record {
     String title,
     String pictureUrl,
     String date,
-    int carbs,
-    int protein,
-    int fats,
+    double carbs,
+    double protein,
+    double fats,
     List<Ingredient> ingredients,
   }) {
     return Record(

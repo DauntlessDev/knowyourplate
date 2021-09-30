@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/profile/user_profile_view.dart';
-import 'package:knowyourplate/ui/views/user/home/record/record_view.dart';
+import 'package:knowyourplate/ui/views/user/home/record/quantity/quantity_view.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_view.dart';
 import 'package:knowyourplate/ui/views/user/home/statistics/user_stats_view.dart';
 import 'package:knowyourplate/ui/views/user/home/user_home_viewmodel.dart';
@@ -31,7 +31,7 @@ class UserHomeView extends StatelessWidget {
                   {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RecordView()),
+                      MaterialPageRoute(builder: (context) => QuantityView()),
                     ),
                   }
                 else

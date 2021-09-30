@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:knowyourplate/model/feedback.dart';
 import 'package:knowyourplate/model/food.dart';
+import 'package:knowyourplate/model/ingredient.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/services/state_services/current_food_service.dart';
 import 'package:knowyourplate/services/state_services/current_user_service.dart';
@@ -59,6 +60,10 @@ class UserHomeViewModel extends BaseViewModel {
               image: _selectedImage, recordId: _recordId);
         }
 
+        List<Ingredient> listOfIngredients = foodresult.components
+            .map((component) => Ingredient(name: component, quantity: 0))
+            .toList();
+
         await _food.updateCurrentFoodInfo(Record(
             recordId: _recordId,
             userEmail: _user.email,
@@ -68,7 +73,7 @@ class UserHomeViewModel extends BaseViewModel {
             carbs: 0,
             protein: 0,
             fats: 0,
-            ingredients: []));
+            ingredients: listOfIngredients));
       }
       notifyListeners();
       setBusy(false);
