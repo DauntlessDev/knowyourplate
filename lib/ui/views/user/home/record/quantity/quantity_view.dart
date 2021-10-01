@@ -160,7 +160,7 @@ class _SignupForm extends ViewModelWidget<QuantityViewModel> {
                           ? _milkNode.requestFocus
                           : model.calculateComponents,
                   textInputAction: TextInputAction.next,
-                  iconData: MdiIcons.accountBox,
+                  iconData: MdiIcons.foodSteak,
                 )
               : SizedBox(),
           (model.hasVegetable)
@@ -173,7 +173,7 @@ class _SignupForm extends ViewModelWidget<QuantityViewModel> {
                       ? _milkNode.requestFocus
                       : model.calculateComponents,
                   textInputAction: TextInputAction.next,
-                  iconData: MdiIcons.briefcase,
+                  iconData: MdiIcons.basket,
                 )
               : SizedBox(),
           (model.hasMilk)
@@ -184,7 +184,7 @@ class _SignupForm extends ViewModelWidget<QuantityViewModel> {
                   focusNode: _milkNode,
                   onEditingComplete: model.calculateComponents,
                   textInputAction: TextInputAction.next,
-                  iconData: MdiIcons.familyTree,
+                  iconData: MdiIcons.cup,
                 )
               : SizedBox(),
         ],
