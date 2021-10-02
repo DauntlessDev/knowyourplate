@@ -8,19 +8,19 @@ class PredictionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<PredictionViewModel>.reactive(
-      viewModelBuilder: () => PredictionViewModel(),
       builder: (context, model, child) => _MainContent(),
+      viewModelBuilder: () => PredictionViewModel(),
     );
   }
 }
 
-class _MainContent extends ViewModelWidget<PredictionView> {
+class _MainContent extends ViewModelWidget<PredictionViewModel> {
   const _MainContent({
     Key key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, PredictionView viewModel) {
+  Widget build(BuildContext context, PredictionViewModel viewModel) {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -34,31 +34,41 @@ class _MainContent extends ViewModelWidget<PredictionView> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text("How would you like your diet records to be predicted?"),
               ElevatedButton(
-                onPressed: null,
+                onPressed: () {
+                  print("3-Days");
+                },
                 child: Row(
                   children: [
                     Icon(Icons.today_sharp),
+                    SizedBox(width: 16.0),
                     Text("3-Day Prediction"),
                   ],
                 ),
               ),
               ElevatedButton(
-                onPressed: null,
+                onPressed: () {
+                  print("Weekly");
+                },
                 child: Row(
                   children: [
                     Icon(Icons.list_alt),
+                    SizedBox(width: 16.0),
                     Text("Weekly Prediction"),
                   ],
                 ),
               ),
               ElevatedButton(
-                onPressed: null,
+                onPressed: () {
+                  print("Monthly");
+                },
                 child: Row(
                   children: [
                     Icon(Icons.calendar_today_outlined),
+                    SizedBox(width: 16.0),
                     Text("Monthly Prediction"),
                   ],
                 ),
