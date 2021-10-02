@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/prediction/prediction_viewmodel.dart';
 import 'package:stacked/stacked.dart';
