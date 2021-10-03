@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/ui/views/user/home/prediction/prediction_viewmodel.dart';
+import 'package:knowyourplate/ui/views/user/home/prediction/result/result_view.dart';
 import 'package:stacked/stacked.dart';
 
 class PredictionView extends StatelessWidget {
@@ -28,46 +29,108 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: EdgeInsets.symmetric(horizontal: 35.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text("How would you like your diet records to be predicted?"),
-              ElevatedButton(
-                onPressed: () {
-                  print("3-Days");
-                },
-                child: Row(
-                  children: [
-                    Icon(Icons.today_sharp),
-                    SizedBox(width: 16.0),
-                    Text("3-Day Prediction"),
-                  ],
+              Spacer(
+                flex: 1,
+              ),
+              Text(
+                "How would you like your diet records to be predicted?",
+                style: const TextStyle(fontSize: 15),
+              ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Material(
+                  color: Colors.green[400],
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: 5.0,
+                  child: MaterialButton(
+                    onPressed: () {
+                      print("3-Days");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResultView()),
+                      );
+                    },
+                    minWidth: double.infinity,
+                    height: 42.0,
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.today_sharp,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 16.0),
+                        Text(
+                          "3-Day Prediction",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  print("Weekly");
-                },
-                child: Row(
-                  children: [
-                    Icon(Icons.list_alt),
-                    SizedBox(width: 16.0),
-                    Text("Weekly Prediction"),
-                  ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Material(
+                  color: Colors.green[400],
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: 5.0,
+                  child: MaterialButton(
+                    onPressed: () {
+                      print("weekly");
+                    },
+                    minWidth: double.infinity,
+                    height: 42.0,
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.list_alt,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 16.0),
+                        Text(
+                          "Weekly Prediction",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  print("Monthly");
-                },
-                child: Row(
-                  children: [
-                    Icon(Icons.calendar_today_outlined),
-                    SizedBox(width: 16.0),
-                    Text("Monthly Prediction"),
-                  ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Material(
+                  color: Colors.green[400],
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: 5.0,
+                  child: MaterialButton(
+                    onPressed: () {
+                      print("monthly");
+                    },
+                    minWidth: double.infinity,
+                    height: 42.0,
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_today_outlined,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 16.0),
+                        Text(
+                          "Monthly Prediction",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
+              ),
+              Spacer(
+                flex: 3,
               ),
             ],
           ),
