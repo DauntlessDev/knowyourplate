@@ -35,11 +35,13 @@ class _MainContent extends ViewModelWidget<ResultViewModel> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: ListView.builder(
-        itemCount: diseases.length,
-        itemBuilder: (BuildContext context, int index) {
-          return diseases[index];
-        },
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount: diseases.length,
+          itemBuilder: (BuildContext context, int index) {
+            return diseases[index];
+          },
+        ),
       ),
     );
   }
