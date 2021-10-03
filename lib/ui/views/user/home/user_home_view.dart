@@ -1,6 +1,7 @@
 //view class
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:knowyourplate/ui/views/user/home/prediction/prediction_view.dart';
 import 'package:knowyourplate/ui/views/user/home/profile/user_profile_view.dart';
 import 'package:knowyourplate/ui/views/user/home/record/quantity/quantity_view.dart';
 import 'package:knowyourplate/ui/views/user/home/search/user_search_view.dart';
@@ -102,6 +103,7 @@ class _CupertinoHomeScaffold extends StatelessWidget {
           _buildItem(TabItem.profile),
           _buildItem(TabItem.stats),
           _buildItem(TabItem.search),
+          _buildItem(TabItem.prediction),
         ],
         onTap: (index) =>
             onSelectTab(TabItem.values[index], navigatorKey[index]),
@@ -148,6 +150,10 @@ class _TabItemData {
       title: 'Search',
       icon: Icons.search,
     ),
+    TabItem.prediction: _TabItemData(
+      title: 'Prediction',
+      icon: Icons.analytics,
+    ),
   };
 
   static Map<TabItem, GlobalKey<NavigatorState>> get navigatorKey {
@@ -155,6 +161,7 @@ class _TabItemData {
       TabItem.profile: UserProfileView.navigatorKey,
       TabItem.stats: UserStatsView.navigatorKey,
       TabItem.search: UserSearchView.navigatorKey,
+      TabItem.prediction: PredictionView.navigatorKey,
     };
   }
 
@@ -163,6 +170,7 @@ class _TabItemData {
       TabItem.profile: (_) => UserProfileView(),
       TabItem.stats: (_) => UserStatsView(),
       TabItem.search: (_) => UserSearchView(),
+      TabItem.prediction: (_) => PredictionView(),
     };
   }
 }
