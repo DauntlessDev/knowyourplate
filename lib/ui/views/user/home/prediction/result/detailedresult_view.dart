@@ -15,10 +15,6 @@ Sed magna ligula, pellentesque sodales pharetra ac, tristique in felis. Pellente
       appBar: AppBar(
         elevation: 1,
         title: Text("Prediction Result"),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

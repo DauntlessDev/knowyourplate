@@ -25,10 +25,6 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
       appBar: AppBar(
         elevation: 1,
         title: Text("Health Prediction"),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
       ),
       body: SafeArea(
         child: Padding(

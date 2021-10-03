@@ -30,10 +30,6 @@ class _MainContent extends ViewModelWidget<ResultViewModel> {
       appBar: AppBar(
         elevation: 1,
         title: Text("Prediction Result"),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
       ),
       body: SafeArea(
         child: ListView.builder(
