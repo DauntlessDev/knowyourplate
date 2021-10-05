@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/disease.dart';
+import 'package:knowyourplate/model/result.dart';
 import 'package:knowyourplate/ui/views/user/home/prediction/result/result_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/disease_card.dart';
 import 'package:stacked/stacked.dart';
 
 class ResultView extends StatelessWidget {
-  static final navigatorKey = GlobalKey<NavigatorState>();
+  final Result result;
+
+  const ResultView({Key key, @required this.result}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         builder: (context, model, child) => _MainContent(
-              diseases: List<DiseaseCard>.generate(
-                  5,
-                  (index) => DiseaseCard(
-                        disease: Disease(
-                            desc: 'asdasd',
-                            longDesc: 'long asdasd',
-                            name: 'name',
-                            probability: 'low'),
-                      )),
+              result: result,
             ),
         viewModelBuilder: () => ResultViewModel());
   }
 }
 
 class _MainContent extends ViewModelWidget<ResultViewModel> {
-  // TODO: Get list from model
-  final List<DiseaseCard> diseases;
+  final Result result;
   const _MainContent({
     Key key,
-    @required this.diseases,
+    @required this.result,
   }) : super(key: key);
 
   @override
@@ -40,13 +34,52 @@ class _MainContent extends ViewModelWidget<ResultViewModel> {
         elevation: 1,
         title: Text("Prediction Result"),
       ),
-      body: SafeArea(
-        child: ListView.builder(
-          itemCount: diseases.length,
-          itemBuilder: (BuildContext context, int index) {
-            return diseases[index];
-          },
-        ),
+      body: SafeArea(child: DiseaseListBuilder(diseaselist: result.diseases)),
+    );
+  }
+}
+
+class DiseaseListBuilder extends StatelessWidget {
+  const DiseaseListBuilder({
+    Key key,
+    @required this.diseaselist,
+  }) : super(key: key);
+
+  final List<Disease> diseaselist;
+
+  @override
+  Widget build(BuildContext context) {
+    print('diseaselist : ${diseaselist.isEmpty}');
+    if (diseaselist.isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(children: [
+          Icon(
+            Icons.celebration,
+            size: 150,
+            color: Colors.green,
+          ),
+          SizedBox(height: 15),
+          Text(
+            'Congrats! you are healthy & has no possible disease based on the diet record and mode you have chosen. Keep it up!  ',
+            style: TextStyle(fontSize: 16),
+          ),
+        ]),
+      );
+    }
+    return ListView.separated(
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return Container();
+        }
+        if (index == diseaselist.length + 1) return Container();
+        return DiseaseCard(disease: diseaselist[index - 1]);
+      },
+      itemCount: diseaselist.length + 2,
+      separatorBuilder: (BuildContext context, int index) => Divider(
+        color: Colors.grey,
+        thickness: .2,
+        height: .2,
       ),
     );
   }

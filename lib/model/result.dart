@@ -24,12 +24,14 @@ class Result {
   }
 
   static Result fromMap(Map<String, dynamic> map) {
+    print(map['diseases']);
     if (map == null) return null;
 
     return Result(
       dietGroup: map['prediction']['diet_group'],
-      diseases:
-          List<Disease>.from(map["diseases"]?.map((x) => Disease.fromMap(x))),
+      diseases: map["diseases"] == null
+          ? null
+          : List<Disease>.from(map["diseases"]?.map((x) => Disease.fromMap(x))),
     );
   }
 
@@ -37,7 +39,7 @@ class Result {
 
   @override
   String toString() {
-    return 'Post(dietGroup: $dietGroup, diseases: $diseases)';
+    return 'Result(dietGroup: $dietGroup, diseases: $diseases)';
   }
 
   @override

@@ -34,11 +34,11 @@ class Disease {
     if (map == null) return null;
 
     return Disease(
-      name: map['diseases']['name'],
-      desc: map['diseases']['desc'],
+      name: map['name'],
+      desc: map['desc'],
       //TODO: to change to longdesc after api update
-      longDesc: map['diseases']['desc'],
-      probability: map['diseases']['probability'],
+      longDesc: map['desc'],
+      probability: map['probability'],
     );
   }
 

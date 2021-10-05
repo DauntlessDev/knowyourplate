@@ -22,4 +22,9 @@ class APIPath {
   static String predictionApi(
           double carbs, double protein, double fats, String intensity) =>
       'https://pc-diet-prediction.herokuapp.com/predict?cho=${carbs.toString()}&protein=${protein.toString()}&fat=${fats.toString()}&intensity=$intensity';
+
+
+  static String testpredictionApi(
+          double carbs, double protein, double fats, String intensity) =>
+      'https://pc-diet-prediction.herokuapp.com/predict?cho=350.12&protein=130.92&fat=83.1&intensity=moderate';
 }

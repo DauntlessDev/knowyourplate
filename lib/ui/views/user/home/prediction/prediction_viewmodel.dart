@@ -35,8 +35,7 @@ class PredictionViewModel extends BaseViewModel {
   }
 
   Future<Result> predictThreeDay() async {
-    //TODO: to change it to 3 after testing, temp 2 value
-    computeTotalComponents(2);
+    computeTotalComponents(3);
     return await _database.predictDisease(
         carbs: aveCarbs,
         protein: aveProtein,

@@ -11,10 +11,6 @@ class DiseaseCard extends StatelessWidget {
 
   final Disease disease;
 
-  // TODO: Replace with actual data
-  static const dummy_string =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras metus elit, egestas vel aliquet nec, rhoncus in dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam elementum urna vel nisl bibendum suscipit";
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,14 +20,15 @@ class DiseaseCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ListTile(
+          ListTile(
+            //TODO: add conditions for icons for each disease
             leading: Icon(MdiIcons.diabetes),
-            title: Text("Disease Name"),
-            subtitle: Text("Disease Probability"),
+            title: Text(disease.name),
+            subtitle: Text(disease.probability),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(dummy_string),
+            child: Text(disease.desc),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -49,7 +46,8 @@ class DiseaseCard extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DetailedResultView()),
+                          builder: (context) =>
+                              DetailedResultView(disease: disease)),
                     );
                   },
                   child: const Text("More Details"),

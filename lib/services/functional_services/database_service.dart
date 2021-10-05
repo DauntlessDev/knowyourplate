@@ -86,8 +86,9 @@ class DatabaseService {
       @required double fats,
       intensity}) async {
     NetworkHelper networkHelper = NetworkHelper(
-        '${APIPath.predictionApi(carbs, protein, fats, intensity)}');
+        '${APIPath.testpredictionApi(carbs, protein, fats, intensity)}');
 
+    //TODO : change the api path to the true prediction api, currently using fake testapi
     print('${APIPath.predictionApi(carbs, protein, fats, intensity)}');
 
     return Result.fromMap(await networkHelper.getData(0));

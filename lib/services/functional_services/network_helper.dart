@@ -14,7 +14,7 @@ class NetworkHelper {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      if (tries < 50) {
+      if (tries < 5) {
         print('tried prediction $tries');
         return getData(tries + 1);
       } else {

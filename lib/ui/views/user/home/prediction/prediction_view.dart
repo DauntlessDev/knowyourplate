@@ -58,7 +58,8 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ResultView()),
+                                  builder: (context) =>
+                                      ResultView(result: model.result)),
                             );
                           },
                     minWidth: double.infinity,
@@ -90,11 +91,14 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                         ? null
                         : () async {
                             print("Weekly");
-                            await model.predictThreeDay();
+                            model.result = await model.predictWeekly();
+                            print('result ${model.result}');
+                            print('count ${model.recordcount}');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ResultView()),
+                                  builder: (context) =>
+                                      ResultView(result: model.result)),
                             );
                           },
                     minWidth: double.infinity,
@@ -126,11 +130,14 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                         ? null
                         : () async {
                             print("Monthly");
-                            await model.predictThreeDay();
+                            model.result = await model.predictMonthly();
+                            print('result ${model.result}');
+                            print('count ${model.recordcount}');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ResultView()),
+                                  builder: (context) =>
+                                      ResultView(result: model.result)),
                             );
                           },
                     minWidth: double.infinity,
