@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/model/result.dart';
+import 'package:knowyourplate/services/functional_services/network_helper.dart';
 import 'package:knowyourplate/services/state_services/current_user_service.dart';
 
 import 'api_path.dart';
@@ -79,10 +80,14 @@ class DatabaseService {
     );
   }
 
-  //  Future<Result> getRegionSummary({@required String region}) async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.getRegionSummary(region)}');
+  Future<Result> predictDisease(
+      {@required int carbs,
+      @required int protein,
+      @required int fats,
+      intensity}) async {
+    NetworkHelper networkHelper = NetworkHelper(
+        '${APIPath.predictionApi(carbs, protein, fats, intensity)}');
 
-  //   return summary.fromJson(await networkHelper.getData());
-  // }
+    return Result.fromMap(await networkHelper.getData());
+  }
 }
