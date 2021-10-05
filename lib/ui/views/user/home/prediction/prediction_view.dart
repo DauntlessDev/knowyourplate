@@ -44,24 +44,26 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Material(
-                  color: Colors.green[400],
+                  color: model.recordcount < 3
+                      ? Colors.grey[400]
+                      : Colors.green[400],
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
-                    onPressed: (model.recordcount < 2)
-                        ? null
-                        : () async {
-                            print("3-Days");
-                            model.result = await model.predictThreeDay();
-                            print('result ${model.result}');
-                            print('count ${model.recordcount}');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ResultView(result: model.result)),
-                            );
-                          },
+                    onPressed: () async {
+                      if (model.recordcount >= 3) {
+                        print("3-Days");
+                        model.result = await model.predictThreeDay();
+                        print('result ${model.result}');
+                        print('count ${model.recordcount}');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ResultView(result: model.result)),
+                        );
+                      }
+                    },
                     minWidth: double.infinity,
                     height: 42.0,
                     child: Row(
@@ -83,24 +85,26 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Material(
-                  color: Colors.green[400],
+                  color: model.recordcount < 7
+                      ? Colors.grey[400]
+                      : Colors.green[400],
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
-                    onPressed: (model.recordcount < 7)
-                        ? null
-                        : () async {
-                            print("Weekly");
-                            model.result = await model.predictWeekly();
-                            print('result ${model.result}');
-                            print('count ${model.recordcount}');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ResultView(result: model.result)),
-                            );
-                          },
+                    onPressed: () async {
+                      if (model.recordcount >= 7) {
+                        print("Weekly");
+                        model.result = await model.predictWeekly();
+                        print('result ${model.result}');
+                        print('count ${model.recordcount}');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ResultView(result: model.result)),
+                        );
+                      }
+                    },
                     minWidth: double.infinity,
                     height: 42.0,
                     child: Row(
@@ -122,24 +126,26 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Material(
-                  color: Colors.green[400],
+                  color: model.recordcount < 30
+                      ? Colors.grey[400]
+                      : Colors.green[400],
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
-                    onPressed: (model.recordcount < 30)
-                        ? null
-                        : () async {
-                            print("Monthly");
-                            model.result = await model.predictMonthly();
-                            print('result ${model.result}');
-                            print('count ${model.recordcount}');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ResultView(result: model.result)),
-                            );
-                          },
+                    onPressed: () async {
+                      if (model.recordcount >= 30) {
+                        print("Monthly");
+                        model.result = await model.predictMonthly();
+                        print('result ${model.result}');
+                        print('count ${model.recordcount}');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ResultView(result: model.result)),
+                        );
+                      }
+                    },
                     minWidth: double.infinity,
                     height: 42.0,
                     child: Row(
