@@ -18,4 +18,7 @@ class APIPath {
   static String records() => 'records/';
 
   static String postPicture(String postId) => 'posts/$postId';
+
+  static String predictionApi(int carbs, int protein, int fats, String intensity) =>
+      'https://pc-diet-prediction.herokuapp.com/predict?cho=${carbs.toString()}&protein=${protein.toString()}2&fat=${fats.toString()}intensity=$intensity';
 }

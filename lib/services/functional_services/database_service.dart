@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/record.dart';
+import 'package:knowyourplate/model/result.dart';
 import 'package:knowyourplate/services/state_services/current_user_service.dart';
 
 import 'api_path.dart';
@@ -77,4 +78,11 @@ class DatabaseService {
       isReversed: true,
     );
   }
+
+  //  Future<Result> getRegionSummary({@required String region}) async {
+  //   NetworkHelper networkHelper =
+  //       NetworkHelper('${APIPath.getRegionSummary(region)}');
+
+  //   return summary.fromJson(await networkHelper.getData());
+  // }
 }
