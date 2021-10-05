@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourplate/model/disease.dart';
 import 'package:knowyourplate/ui/views/user/home/prediction/result/result_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/disease_card.dart';
 import 'package:stacked/stacked.dart';
@@ -10,7 +11,15 @@ class ResultView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         builder: (context, model, child) => _MainContent(
-              diseases: List<DiseaseCard>.generate(5, (index) => DiseaseCard()),
+              diseases: List<DiseaseCard>.generate(
+                  5,
+                  (index) => DiseaseCard(
+                        disease: Disease(
+                            desc: 'asdasd',
+                            longDesc: 'long asdasd',
+                            name: 'name',
+                            probability: 'low'),
+                      )),
             ),
         viewModelBuilder: () => ResultViewModel());
   }

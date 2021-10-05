@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourplate/model/disease.dart';
 import 'package:knowyourplate/ui/views/user/home/prediction/result/detailedresult_view.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class DiseaseCard extends StatelessWidget {
   const DiseaseCard({
     Key key,
-    @required this.background,
-    @required this.Disease,
+    @required this.disease,
   }) : super(key: key);
 
-  final Color background;
-  final String Disease;
+  final Disease disease;
 
   // TODO: Replace with actual data
   static const dummy_string =

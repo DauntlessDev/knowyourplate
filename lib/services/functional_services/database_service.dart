@@ -81,13 +81,15 @@ class DatabaseService {
   }
 
   Future<Result> predictDisease(
-      {@required int carbs,
-      @required int protein,
-      @required int fats,
+      {@required double carbs,
+      @required double protein,
+      @required double fats,
       intensity}) async {
     NetworkHelper networkHelper = NetworkHelper(
         '${APIPath.predictionApi(carbs, protein, fats, intensity)}');
 
-    return Result.fromMap(await networkHelper.getData());
+    print('${APIPath.predictionApi(carbs, protein, fats, intensity)}');
+
+    return Result.fromMap(await networkHelper.getData(0));
   }
 }

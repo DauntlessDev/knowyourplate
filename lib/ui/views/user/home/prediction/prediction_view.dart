@@ -21,7 +21,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, PredictionViewModel viewModel) {
+  Widget build(BuildContext context, PredictionViewModel model) {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -48,13 +48,19 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
-                    onPressed: () {
-                      print("3-Days");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ResultView()),
-                      );
-                    },
+                    onPressed: (model.recordcount < 2)
+                        ? null
+                        : () async {
+                            print("3-Days");
+                            model.result = await model.predictThreeDay();
+                            print('result ${model.result}');
+                            print('count ${model.recordcount}');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultView()),
+                            );
+                          },
                     minWidth: double.infinity,
                     height: 42.0,
                     child: Row(
@@ -80,9 +86,17 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
-                    onPressed: () {
-                      print("weekly");
-                    },
+                    onPressed: (model.recordcount < 7)
+                        ? null
+                        : () async {
+                            print("Weekly");
+                            await model.predictThreeDay();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultView()),
+                            );
+                          },
                     minWidth: double.infinity,
                     height: 42.0,
                     child: Row(
@@ -108,9 +122,17 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
-                    onPressed: () {
-                      print("monthly");
-                    },
+                    onPressed: (model.recordcount < 30)
+                        ? null
+                        : () async {
+                            print("Monthly");
+                            await model.predictThreeDay();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultView()),
+                            );
+                          },
                     minWidth: double.infinity,
                     height: 42.0,
                     child: Row(
