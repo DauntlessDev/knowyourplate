@@ -15,7 +15,7 @@ class UserSignupView extends StatelessWidget {
       viewModelBuilder: () => UserSignupViewModel(),
       builder: (context, model, child) {
         return ModalProgressHUD(
-        inAsyncCall: model.isBusy,
+          inAsyncCall: model.isBusy,
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             body: SafeArea(
@@ -72,6 +72,11 @@ class _MainContent extends ViewModelWidget<UserSignupViewModel> {
                 model.result = await model.signUpWithEmail(),
                 if (model.result.title == 'Sign-up Success')
                   {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text('Sign-up Success'),
+                      ),
+                    ),
                     Navigator.pop(context),
                   }
                 else

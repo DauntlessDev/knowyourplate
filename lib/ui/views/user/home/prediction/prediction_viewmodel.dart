@@ -35,24 +35,34 @@ class PredictionViewModel extends BaseViewModel {
   }
 
   Future<Result> predictThreeDay() async {
+    setBusy(true);
     computeTotalComponents(3);
-    return await _database.predictDisease(
+    Result result = await _database.predictDisease(
         carbs: aveCarbs,
         protein: aveProtein,
         fats: aveFats,
         intensity: intensity);
+
+    setBusy(false);
+    return result;
   }
 
   Future<Result> predictWeekly() async {
+    setBusy(true);
     computeTotalComponents(7);
-    return await _database.predictDisease(
+    Result result = await _database.predictDisease(
         carbs: aveCarbs, protein: aveProtein, fats: aveFats);
+    setBusy(false);
+    return result;
   }
 
   Future<Result> predictMonthly() async {
+    setBusy(true);
     computeTotalComponents(30);
-    return await _database.predictDisease(
+    Result result = await _database.predictDisease(
         carbs: aveCarbs, protein: aveProtein, fats: aveFats);
+    setBusy(false);
+    return result;
   }
 
   int get recordcount => _currentRecord.recordList.length;

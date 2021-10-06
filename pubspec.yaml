@@ -30,7 +30,7 @@ dependencies:
   material_design_icons_flutter: 4.0.5955
   cached_network_image: ^2.3.1
   charts_flutter: ^0.10.0
-  
+
   firebase_core: ^0.4.5
   firebase_auth: ^0.16.1
   firebase_storage: ^3.1.6

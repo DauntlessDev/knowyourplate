@@ -68,6 +68,11 @@ class _MainContent extends ViewModelWidget<UserLoginViewModel> {
                 model.result = await model.signInWithEmail(),
                 if (model.result.title == 'Login Success')
                   {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text('Login Success'),
+                      ),
+                    ),
                   }
                 else
                   {
