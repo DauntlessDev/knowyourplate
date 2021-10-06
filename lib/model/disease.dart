@@ -36,8 +36,7 @@ class Disease {
     return Disease(
       name: map['name'],
       desc: map['desc'],
-      //TODO: to change to longdesc after api update
-      longDesc: map['desc'],
+      longDesc: map['long_desc'],
       probability: map['probability'],
     );
   }

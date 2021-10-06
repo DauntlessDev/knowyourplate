@@ -15,15 +15,18 @@ class StatsContent extends StatefulWidget {
   final List<Record> userRecordList;
 
   @override
-  _StatsContentState createState() => _StatsContentState();
+  _StatsContentState createState() => _StatsContentState(userRecordList);
 }
 
 class _StatsContentState extends State<StatsContent> {
+  _StatsContentState(this.userRecordList);
+
   @override
   void dispose() {
     super.dispose();
   }
 
+  final List<Record> userRecordList;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,7 +59,18 @@ class _StatsContentState extends State<StatsContent> {
               padding: const EdgeInsets.all(20.0),
               child: Container(
                 height: 500,
-                child: GroupedBarChart.withSampleData(),
+                child: userRecordList.length == 0
+                    ? Center(
+                        child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Not Available"),
+                          Text("You currently don't have any records.",
+                              style: TextStyle(fontSize: 12)),
+                        ],
+                      ))
+                    : GroupedBarChart.withSampleData(userRecordList),
               ),
             ),
           ),
