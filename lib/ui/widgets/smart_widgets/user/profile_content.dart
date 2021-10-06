@@ -45,7 +45,7 @@ class _ProfileContentState extends State<ProfileContent> {
             child: Row(
               children: <Widget>[
                 Icon(Icons.pages),
-                Text(' Posts'),
+                Text(' Records'),
               ],
             ),
           ),
@@ -79,8 +79,8 @@ class OwnPostListBuilder extends StatelessWidget {
         child: SizedBox(
           height: 500,
           child: EmptyContent(
-            title: 'Empty Posts',
-            message: 'The user don\'t have any post.',
+            title: 'Empty Records',
+            message: 'The user don\'t have any records.',
           ),
         ),
       );

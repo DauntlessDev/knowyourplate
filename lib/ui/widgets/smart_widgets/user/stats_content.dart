@@ -76,34 +76,51 @@ class _ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          child: Avatar(photoUrl: '', radius: 40),
-          constraints: BoxConstraints(minWidth: 100),
-        ),
-        const SizedBox(height: 20),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                profile.displayName ?? '',
-                style: Theme.of(context).textTheme.bodyText2,
+    return Container(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            child: Avatar(photoUrl: '', radius: 40),
+            constraints: BoxConstraints(minWidth: 100),
+          ),
+          const SizedBox(height: 20),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(
+                  profile.displayName ?? '',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
               ),
-            ),
-            const SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(profile.email,
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
-            ),
-          ],
-        )
-      ],
+              const SizedBox(height: 5),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(profile.email,
+                    style:
+                        TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
+              ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(
+                    'Occupation: ${profile.occupation[0].toUpperCase()}${profile.occupation.substring(1)}',
+                    style:
+                        TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text('History: ${profile.familyHealthHistory}',
+                    style:
+                        TextStyle(fontSize: 11, fontWeight: FontWeight.w300)),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
