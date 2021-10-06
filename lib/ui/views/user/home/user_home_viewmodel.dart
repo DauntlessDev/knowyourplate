@@ -43,46 +43,58 @@ class UserHomeViewModel extends BaseViewModel {
     setBusy(true);
     try {
       File _image = await _database.getImage();
+      print('___image value : ${_image.path}');
 
-      Food foodresult = Food.fromJson(await (fakeUploadToApi(_image)));
+      if (_image.path != null) {
+        Food foodresult = Food.fromJson(await (fakeUploadToApi(_image)));
 
-      if (foodresult != null) {
-        _imagePath = _image.path;
-        _selectedImage = _image;
+        if (foodresult != null) {
+          _imagePath = _image.path;
+          _selectedImage = _image;
 
-        String date = DateTime.now().toIso8601String();
-        String _recordId =
-            generatedPostId(posterEmail: _user.email, time: date);
+          String date = DateTime.now().toIso8601String();
+          String _recordId =
+              generatedPostId(posterEmail: _user.email, time: date);
 
-        String _pictureDownloadUrl = "";
-        if (_selectedImage != null) {
-          _pictureDownloadUrl = await _database.uploadPostPicture(
-              image: _selectedImage, recordId: _recordId);
+          String _pictureDownloadUrl = "";
+          if (_selectedImage != null) {
+            _pictureDownloadUrl = await _database.uploadPostPicture(
+                image: _selectedImage, recordId: _recordId);
+          }
+
+          List<Ingredient> listOfIngredients = foodresult.components
+              .map((component) => Ingredient(name: component, quantity: 0))
+              .toList();
+
+          await _food.updateCurrentFoodInfo(Record(
+              recordId: _recordId,
+              userEmail: _user.email,
+              title: foodresult.foodname,
+              pictureUrl: _pictureDownloadUrl,
+              date: date,
+              carbs: 0,
+              protein: 0,
+              fats: 0,
+              ingredients: listOfIngredients));
         }
-
-        List<Ingredient> listOfIngredients = foodresult.components
-            .map((component) => Ingredient(name: component, quantity: 0))
-            .toList();
-
-        await _food.updateCurrentFoodInfo(Record(
-            recordId: _recordId,
-            userEmail: _user.email,
-            title: foodresult.foodname,
-            pictureUrl: _pictureDownloadUrl,
-            date: date,
-            carbs: 0,
-            protein: 0,
-            fats: 0,
-            ingredients: listOfIngredients));
+        notifyListeners();
+        setBusy(false);
+        return Feedback(
+            title: 'Success', details: 'Image is successfully classified.');
+      } else {
+        notifyListeners();
+        setBusy(false);
+        return Feedback(title: 'Cancelled', details: 'Image is not captured.');
       }
+    } on PlatformException {
       notifyListeners();
       setBusy(false);
       return Feedback(
-          title: 'Success', details: 'Image is successfully classified.');
-    } on PlatformException {
-      setBusy(false);
-      return Feedback(
           title: 'Failed', details: 'Image classification has failed.');
+    } on NoSuchMethodError {
+      notifyListeners();
+      setBusy(false);
+      return Feedback(title: 'Cancelled', details: 'Image is not captured.');
     }
   }
 
