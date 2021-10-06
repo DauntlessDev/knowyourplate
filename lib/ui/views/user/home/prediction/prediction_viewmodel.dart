@@ -15,6 +15,7 @@ class PredictionViewModel extends BaseViewModel {
 
   String intensity = 'moderate';
 
+  //TODO: @Hez - Prediction of Disease;
   computeTotalComponents(int divisor) {
     double totalCarbs = 0;
     double totalProtein = 0;

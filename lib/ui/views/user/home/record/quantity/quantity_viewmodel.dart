@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 class QuantityViewModel extends BaseViewModel {
   final _currentFood = CurrentFoodService.instance;
 
+  //TODO: @Hez - Calculation of Components;
   double calculateFatComponent(
       {double meat = 0, double milk = 0, double vegetable = 0}) {
     return ((meat * 5.0) + (milk * 8.0) + (vegetable * 1.0));
