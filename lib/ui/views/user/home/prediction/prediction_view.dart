@@ -12,6 +12,7 @@ class PredictionView extends StatelessWidget {
     return ViewModelBuilder<PredictionViewModel>.reactive(
       builder: (context, model, child) => _MainContent(),
       viewModelBuilder: () => PredictionViewModel(),
+      onModelReady: (model) => model.initialize(),
     );
   }
 }
@@ -84,7 +85,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                     elevation: 5.0,
                     child: MaterialButton(
                       onPressed: () async {
-                        if (model.recordcount >= 3) {
+                        if (model.checkIfAvailable(3)) {
                           print("3-Days");
                           model.result = await model.predictThreeDay();
                           print('result ${model.result}');
@@ -129,7 +130,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  'This prediction mode is unavailable, You only have ${model.recordcount} Records.'),
+                                  "3-day mode is unavailable, User's record does not meet the requirements."),
                             ),
                           );
                         }
@@ -160,7 +161,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                     elevation: 5.0,
                     child: MaterialButton(
                       onPressed: () async {
-                        if (model.recordcount >= 7) {
+                        if (model.checkIfAvailable(7)) {
                           print("Weekly");
                           model.result = await model.predictWeekly();
                           print('result ${model.result}');
@@ -175,7 +176,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  'This prediction mode is unavailable, You only have ${model.recordcount} Records.'),
+                                  "Weekly mode is unavailable, User's record does not meet the requirements."),
                             ),
                           );
                         }
@@ -206,7 +207,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                     elevation: 5.0,
                     child: MaterialButton(
                       onPressed: () async {
-                        if (model.recordcount >= 30) {
+                        if (model.checkIfAvailable(30)) {
                           print("Monthly");
                           model.result = await model.predictMonthly();
                           print('result ${model.result}');
@@ -228,7 +229,7 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  'This prediction mode is unavailable, You only have ${model.recordcount} Records.'),
+                                  "Monthly mode is unavailable, User's record does not meet the requirements."),
                             ),
                           );
                         }
