@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/model/result.dart';
 import 'package:knowyourplate/services/functional_services/database_service.dart';
