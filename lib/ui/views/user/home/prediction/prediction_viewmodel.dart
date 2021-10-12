@@ -13,7 +13,12 @@ class PredictionViewModel extends BaseViewModel {
   double aveProtein = 0;
   double aveFats = 0;
 
-  String intensity = 'moderate';
+  String _intensity = 'Low';
+  String get intensity => _intensity;
+  setIntensity(String input) {
+    _intensity = input;
+    notifyListeners();
+  }
 
   //TODO: @Hez - Prediction of Disease;
   computeTotalComponents(int divisor) {
@@ -42,7 +47,7 @@ class PredictionViewModel extends BaseViewModel {
         carbs: aveCarbs,
         protein: aveProtein,
         fats: aveFats,
-        intensity: intensity);
+        intensity: _intensity.toLowerCase());
 
     setBusy(false);
     return result;

@@ -32,7 +32,7 @@ class QuantityView extends StatelessWidget {
 class _MainContent extends ViewModelWidget<QuantityViewModel> {
   const _MainContent({
     Key key,
-  }) : super(key: key, reactive: false);
+  }) : super(key: key, reactive: true);
 
   @override
   Widget build(BuildContext context, QuantityViewModel model) {
@@ -45,7 +45,7 @@ class _MainContent extends ViewModelWidget<QuantityViewModel> {
         padding: const EdgeInsets.all(40.0),
         child: Column(
           children: <Widget>[
-            Spacer(flex: 10),
+            Spacer(flex: 3),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -54,6 +54,45 @@ class _MainContent extends ViewModelWidget<QuantityViewModel> {
               ),
             ),
             const Spacer(flex: 1),
+            Text(
+              "What is the type of the meat? ",
+              style: const TextStyle(fontSize: 15),
+            ),
+            SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                "• Low fat meat - meat with no to trimmed off fat/skin  \n\n• Med fat meat - meat with less fat/skin included \n\n• High fat meat - meat with large fatty cuts (skin is included)",
+                style: const TextStyle(fontSize: 12),
+              ),
+            ),
+            DropdownButton<String>(
+              value: model.meatType,
+              icon: const Icon(Icons.arrow_downward),
+              iconSize: 24,
+              elevation: 16,
+              style: const TextStyle(color: Colors.deepPurple),
+              underline: Container(
+                height: 2,
+                color: Colors.deepPurpleAccent,
+              ),
+              onChanged: model.setMeatType,
+              items: <String>['Low', 'Med', 'High']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 70),
+            Text(
+              "Enter the meat and vegetable quantity in values of cups.",
+              style: const TextStyle(
+                fontSize: 12,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
             _SignupForm(),
             const SizedBox(height: 20),
             RoundedButton(

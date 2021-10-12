@@ -19,7 +19,7 @@ class PredictionView extends StatelessWidget {
 class _MainContent extends ViewModelWidget<PredictionViewModel> {
   const _MainContent({
     Key key,
-  }) : super(key: key);
+  }) : super(key: key, reactive: true);
 
   @override
   Widget build(BuildContext context, PredictionViewModel model) {
@@ -39,6 +39,38 @@ class _MainContent extends ViewModelWidget<PredictionViewModel> {
                 Spacer(
                   flex: 1,
                 ),
+                Text(
+                  "How intense is your physical activity level? ",
+                  style: const TextStyle(fontSize: 15),
+                ),
+                SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    "• Low - Activities where breathing is done easily \n\n• Moderate - Activities or movements where you can breathe comfortably while doing \n\n• Vigorous - Activities that involve intense movements where breathing is short while doing",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
+                DropdownButton<String>(
+                  value: model.intensity,
+                  icon: const Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  onChanged: model.setIntensity,
+                  items: <String>['Low', 'Moderate', 'Vigorous']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(height: 35),
                 Text(
                   "How would you like your diet records to be predicted?",
                   style: const TextStyle(fontSize: 15),

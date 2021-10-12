@@ -68,6 +68,17 @@ class QuantityViewModel extends BaseViewModel {
 
   bool hasMeat = false, hasMilk = false, hasVegetable = false;
 
+
+
+  //TODO: @Hez, use meattype for calculation
+
+  String _meatType = 'Low';
+  String get meatType => _meatType;
+  setMeatType(String input) {
+    _meatType = input;
+    notifyListeners();
+  }
+
   String _meatQuantity = '';
   String get meatQuantity => _meatQuantity;
   setMeatQuantity(String input) => _meatQuantity = input;
