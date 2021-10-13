@@ -22,16 +22,29 @@ class PredictionViewModel extends BaseViewModel {
   }
 
   DateTime dateOfFirstRecord;
+  List<Record> recordlist;
+  bool hasRecords;
   initialize() {
     setBusy(true);
-    dateOfFirstRecord = DateTime.parse(_currentRecord.recordList.last.date);
+    try {
+      recordlist = _currentRecord.recordList;
+      dateOfFirstRecord = DateTime.parse(_currentRecord.recordList.last.date);
+      hasRecords = true;
+    } catch (e) {
+      hasRecords = false;
+      print('no record to be checked');
+    }
     notifyListeners();
     setBusy(false);
   }
 
   bool checkIfAvailable(int dateDifference) {
-    return (dateOfFirstRecord.difference(DateTime.now()).abs() >=
-        Duration(days: dateDifference));
+    if (hasRecords) {
+      return (dateOfFirstRecord.difference(DateTime.now()).abs() >=
+          Duration(days: dateDifference));
+    } else {
+      return false;
+    }
   }
 
   //TODO: @Hez - Prediction of Disease;

@@ -1,34 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/profile.dart';
-import 'package:knowyourplate/model/record.dart';
-import 'package:knowyourplate/ui/widgets/smart_widgets/user/charts/groupedbarchart.dart';
-import '../../avatar.dart';
+import 'package:knowyourplate/ui/views/user/home/statistics/user_stats_view.dart';
+import 'package:knowyourplate/ui/views/user/home/statistics/user_stats_viewmodel.dart';
+import 'package:knowyourplate/ui/widgets/avatar.dart';
+import 'package:stacked/stacked.dart';
 
-class StatsContent extends StatefulWidget {
+class StatsContent extends ViewModelWidget<UserStatsViewModel> {
   const StatsContent({
     Key key,
-    @required this.profile,
-    @required this.userRecordList,
-  }) : super(key: key);
-
-  final Profile profile;
-  final List<Record> userRecordList;
+  }) : super(key: key, reactive: true);
 
   @override
-  _StatsContentState createState() => _StatsContentState(userRecordList);
-}
-
-class _StatsContentState extends State<StatsContent> {
-  _StatsContentState(this.userRecordList);
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  final List<Record> userRecordList;
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, UserStatsViewModel model) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 7, 7),
       child: Column(
@@ -36,7 +19,7 @@ class _StatsContentState extends State<StatsContent> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: _ProfileHeader(
-              profile: widget.profile,
+              profile: model.profile,
             ),
           ),
           Align(
@@ -59,18 +42,18 @@ class _StatsContentState extends State<StatsContent> {
               padding: const EdgeInsets.all(20.0),
               child: Container(
                 height: 500,
-                child: userRecordList.length == 0
+                child: model.ownRecordList.length == 0
                     ? Center(
                         child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text("Not Available"),
-                          Text("You currently don't have any records.",
+                          Text("You currently don't have enough records.",
                               style: TextStyle(fontSize: 12)),
                         ],
                       ))
-                    : GroupedBarChart.withSampleData(userRecordList),
+                    : GroupedBarChart(),
               ),
             ),
           ),
