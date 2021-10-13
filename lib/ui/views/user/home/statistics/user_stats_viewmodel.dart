@@ -2,7 +2,6 @@ import 'package:charts_flutter/flutter.dart';
 import 'package:knowyourplate/model/profile.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/services/functional_services/database_service.dart';
-import 'package:knowyourplate/services/state_services/current_record_service.dart';
 import 'package:knowyourplate/services/state_services/current_user_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -10,7 +9,6 @@ import 'package:charts_flutter/flutter.dart' as charts;
 class UserStatsViewModel extends StreamViewModel<Profile> {
   final _database = DatabaseService.instance;
   final _user = CurrentUserService.instance;
-  final _currentRecord = CurrentRecordService.instance;
 
   Stream<List<Record>> ownRecordStream() =>
       _database.specificRecordStream(_user.email);
@@ -20,7 +18,6 @@ class UserStatsViewModel extends StreamViewModel<Profile> {
   List<Record> ownRecordList = [];
   List<Series<Ordinalamount, String>> seriesList = [];
   initialize() {
-    // ownRecordList = _currentRecord.recordList;
     seriesList = _createSampleData();
     notifyListeners();
   }
