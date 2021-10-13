@@ -21,7 +21,7 @@ class DiseaseCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            //TODO: add conditions for icons for each disease
+            //TODO: [OPTIONAL] add conditions for icons for each disease
             leading: Icon(MdiIcons.diabetes),
             title: Text(disease.name),
             subtitle: Text(disease.probability),
