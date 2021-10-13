@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/record.dart';
 // import 'package:knowyourplate/services/functional_services/ar_service.dart'
 
-class ARRecord extends StatelessWidget {
+class ARRecord extends StatefulWidget {
   ARRecord({
     Key key,
     @required this.record,
@@ -12,10 +12,19 @@ class ARRecord extends StatelessWidget {
   final Record record;
 
   @override
+  _ARRecordState createState() => _ARRecordState();
+}
+
+class _ARRecordState extends State<ARRecord> {
+
+  // TODO: ARCore functions
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
+        // TODO: ADD ARCoreView here
         Container(
           color: Colors.green,
           child: Padding(
@@ -28,7 +37,8 @@ class ARRecord extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image(
-                      image: CachedNetworkImageProvider(record.pictureUrl),
+                      image:
+                          CachedNetworkImageProvider(widget.record.pictureUrl),
                       width: 200,
                       height: 200,
                       fit: BoxFit.fitHeight,
@@ -41,7 +51,7 @@ class ARRecord extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
-                        child: Text("Food: ${record.title}"),
+                        child: Text("Food: ${widget.record.title}"),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,7 +67,7 @@ class ARRecord extends StatelessWidget {
                                 ),
                               ),
                               Text("CHO"),
-                              Text("${record.carbs}"),
+                              Text("${widget.record.carbs}"),
                             ],
                           ),
                           Column(
@@ -71,7 +81,7 @@ class ARRecord extends StatelessWidget {
                                 ),
                               ),
                               Text("PRO"),
-                              Text("${record.protein}"),
+                              Text("${widget.record.protein}"),
                             ],
                           ),
                           Column(
@@ -85,7 +95,7 @@ class ARRecord extends StatelessWidget {
                                 ),
                               ),
                               Text("FAT"),
-                              Text("${record.fats}"),
+                              Text("${widget.record.fats}"),
                             ],
                           ),
                         ],
@@ -97,7 +107,6 @@ class ARRecord extends StatelessWidget {
             ),
           ),
         ),
-        // TODO: CHUA - ADD ARCore View here
       ],
     );
   }
