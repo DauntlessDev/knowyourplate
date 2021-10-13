@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:knowyourplate/model/record.dart';
-// import 'package:knowyourplate/services/functional_services/ar_service.dart'
+import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
+import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ARRecord extends StatefulWidget {
   ARRecord({
@@ -18,6 +19,70 @@ class ARRecord extends StatefulWidget {
 class _ARRecordState extends State<ARRecord> {
 
   // TODO: ARCore functions
+  ArCoreController arCoreController;
+
+  void _onArCoreViewCreated(ArCoreController controller) {
+    arCoreController = controller;
+
+    _addCylindre(arCoreController);
+    _addCylindre2(arCoreController);
+    _addCylindre3(arCoreController);
+  }
+
+  void _addCylindre(ArCoreController controller) {
+    final material = ArCoreMaterial(
+      color: Colors.red,
+      reflectance: 1.0,
+    );
+    final cylindre = ArCoreCylinder(
+      materials: [material],
+      radius: 0.5,
+      height: 0.1,
+    );
+    final node = ArCoreNode(
+      shape: cylindre,
+      position: vector.Vector3(0.0, -0.5, -3.0),
+    );
+    controller.addArCoreNode(node);
+  }
+  void _addCylindre2(ArCoreController controller) {
+    final material = ArCoreMaterial(
+      color: Colors.green,
+      reflectance: 1.0,
+    );
+    final cylindre = ArCoreCylinder(
+      materials: [material],
+      radius: 0.2,
+      height: 0.1,
+    );
+    final node = ArCoreNode(
+      shape: cylindre,
+      position: vector.Vector3(0.5, -0.5, -3.0),
+    );
+    controller.addArCoreNode(node);
+  }
+  void _addCylindre3(ArCoreController controller) {
+    final material = ArCoreMaterial(
+      color: Colors.blue,
+      reflectance: 1.0,
+    );
+    final cylindre = ArCoreCylinder(
+      materials: [material],
+      radius: 0.7,
+      height: 0.1,
+    );
+    final node = ArCoreNode(
+      shape: cylindre,
+      position: vector.Vector3(-0.5, -0.5, -3.0),
+    );
+    controller.addArCoreNode(node);
+  }
+
+  @override
+  void dispose() {
+    arCoreController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +90,9 @@ class _ARRecordState extends State<ARRecord> {
       alignment: AlignmentDirectional.topCenter,
       children: [
         // TODO: ADD ARCoreView here
+        ArCoreView(
+            onArCoreViewCreated: _onArCoreViewCreated,
+        ),
         Container(
           color: Colors.green,
           child: Padding(

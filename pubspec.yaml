@@ -43,6 +43,8 @@ dependencies:
   image_picker: ^0.6.7+4
   http: ^0.12.1
 
+  arcore_flutter_plugin: ^0.1.0-null-safety.3
+
 dev_dependencies:
   flutter_launcher_icons: ^0.9.2
   flutter_test:
