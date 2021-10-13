@@ -46,7 +46,7 @@ class UserHomeViewModel extends BaseViewModel {
       print('___image value : ${_image.path}');
 
       if (_image.path != null) {
-        Food foodresult = Food.fromJson(await (fakeUploadToApi(_image)));
+        Food foodresult = Food.fromJson(await (uploadFileToApi(_image)));
 
         if (foodresult != null) {
           _imagePath = _image.path;

@@ -18,6 +18,10 @@ class QuantityView extends StatelessWidget {
         return ModalProgressHUD(
           inAsyncCall: model.isBusy,
           child: Scaffold(
+            appBar: AppBar(
+              elevation: 1,
+              title: Text("Health Prediction"),
+            ),
             resizeToAvoidBottomInset: false,
             body: SafeArea(
               child: const _MainContent(),
@@ -42,132 +46,127 @@ class _MainContent extends ViewModelWidget<QuantityViewModel> {
       ),
       duration: Duration(milliseconds: 220),
       child: Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: Column(
-          children: <Widget>[
-            Spacer(flex: 3),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Calculate Macronutrients!',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 35),
+              Text(
+                "What is the type of the meat? ",
+                style: const TextStyle(fontSize: 15),
               ),
-            ),
-            const Spacer(flex: 1),
-            Text(
-              "What is the type of the meat? ",
-              style: const TextStyle(fontSize: 15),
-            ),
-            SizedBox(height: 25),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                "• Low fat meat - meat with no to trimmed off fat/skin  \n\n• Med fat meat - meat with less fat/skin included \n\n• High fat meat - meat with large fatty cuts (skin is included)",
-                style: const TextStyle(fontSize: 12),
-              ),
-            ),
-            DropdownButton<String>(
-              value: model.meatType,
-              icon: const Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              style: const TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: model.setMeatType,
-              items: <String>['Low', 'Med', 'High']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 70),
-            Text(
-              "Enter the meat and vegetable quantity in values of cups.",
-              style: const TextStyle(
-                fontSize: 12,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-            _SignupForm(),
-            const SizedBox(height: 20),
-            RoundedButton(
-              onPressed: () => {
-                showDialog<void>(
-                  context: context,
-                  barrierDismissible: false, // user must tap button!
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Proceed Calculation'),
-                      content: SingleChildScrollView(
-                        child: ListBody(
-                          children: <Widget>[
-                            Text(
-                                'Are you sure that you inputted the correct quantity?'),
-                          ],
-                        ),
-                      ),
-                      actions: <Widget>[
-                        TextButton(
-                          child: const Text('Confirm'),
-                          onPressed: () {
-                            model.result = model.calculateComponents();
-                            if (model.result.title == 'Success') {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => RecordView()));
-                            } else {
-                              showDialog<void>(
-                                context: context,
-                                barrierDismissible:
-                                    false, // user must tap button!
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text(model.result.title),
-                                    content: SingleChildScrollView(
-                                      child: ListBody(
-                                        children: <Widget>[
-                                          Text(model.result.details),
-                                        ],
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: const Text('Confirm'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                              print('error in calculating');
-                            }
-                          },
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            print('cancelled calculation');
-                          },
-                          child: const Text('Cancel'),
-                        ),
-                      ],
-                    );
-                  },
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  "• Low fat meat - meat with no to trimmed off fat/skin  \n\n• Med fat meat - meat with less fat/skin included \n\n• High fat meat - meat with large fatty cuts (skin is included)",
+                  style: const TextStyle(fontSize: 12),
                 ),
-              },
-              text: 'Calculate',
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            const Spacer(flex: 4),
-          ],
+              ),
+              Container(
+                child: DropdownButton<String>(
+                  value: model.meatType,
+                  icon: const Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  onChanged: model.setMeatType,
+                  items: <String>['Low', 'Med', 'High']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ),
+              const SizedBox(height: 30),
+              Text(
+                "Enter the meat and vegetable quantity in values of cups.",
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              _SignupForm(),
+              const SizedBox(height: 15),
+              RoundedButton(
+                onPressed: () => {
+                  showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Proceed Calculation'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(
+                                  'Are you sure that you inputted the correct quantity?'),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Confirm'),
+                            onPressed: () {
+                              model.result = model.calculateComponents();
+                              if (model.result.title == 'Success') {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => RecordView()));
+                              } else {
+                                showDialog<void>(
+                                  context: context,
+                                  barrierDismissible:
+                                      false, // user must tap button!
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(model.result.title),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: <Widget>[
+                                            Text(model.result.details),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: const Text('Confirm'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                print('error in calculating');
+                              }
+                            },
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              print('cancelled calculation');
+                            },
+                            child: const Text('Cancel'),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                },
+                text: 'Calculate',
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ],
+          ),
         ),
       ),
     );
