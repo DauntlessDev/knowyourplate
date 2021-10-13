@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:knowyourplate/model/profile.dart';
+import 'package:knowyourplate/ui/views/user/home/statistics/stats_content.dart';
 import 'package:knowyourplate/ui/views/user/home/statistics/user_stats_viewmodel.dart';
-import 'package:knowyourplate/ui/widgets/smart_widgets/user/stats_content.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class UserStatsView extends StatelessWidget {
   static final navigatorKey = GlobalKey<NavigatorState>();
@@ -27,7 +27,7 @@ class UserStatsView extends StatelessWidget {
 class _MainContent extends ViewModelWidget<UserStatsViewModel> {
   const _MainContent({
     Key key,
-  }) : super(key: key);
+  }) : super(key: key, reactive: true);
 
   @override
   Widget build(BuildContext context, UserStatsViewModel model) {
@@ -45,20 +45,21 @@ class _MainContent extends ViewModelWidget<UserStatsViewModel> {
         ),
       ),
       body: SafeArea(
-        child: StatsContent(
-                profile: Profile(
-                  displayName: model.profile.displayName,
-                  email: model.profile.email,
-                  photoUrl: '',
-                  records: model.profile.records,
-                  uid: model.profile.uid,
-                  caseSearch: model.profile.caseSearch,
-                  familyHealthHistory: model.profile.familyHealthHistory,
-                  occupation: model.profile.occupation,
-                ),
-                userRecordList: model.ownRecordList,
-              ),
+        child: StatsContent(),
       ),
+    );
+  }
+}
+
+class GroupedBarChart extends ViewModelWidget<UserStatsViewModel> {
+  const GroupedBarChart({Key key}) : super(key: key, reactive: true);
+
+  @override
+  Widget build(BuildContext context, UserStatsViewModel model) {
+    return charts.BarChart(
+      model.seriesList,
+      animate: false,
+      barGroupingType: charts.BarGroupingType.grouped,
     );
   }
 }
