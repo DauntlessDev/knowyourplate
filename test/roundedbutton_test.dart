@@ -14,7 +14,7 @@ void main() {
         ),
       ),
     );
-    final button = find.byType(RaisedButton);
+    final button = find.byType(MaterialButton);
     expect(button, findsOneWidget);
     expect(find.text('tap me'), findsOneWidget);
 
