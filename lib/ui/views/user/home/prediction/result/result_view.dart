@@ -49,8 +49,8 @@ class DiseaseListBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('diseaselist : ${diseaselist.isEmpty}');
-    if (diseaselist.isEmpty) {
+    print('diseaselist is null : ${diseaselist == null}');
+    if (diseaselist == null || diseaselist.isEmpty) {
       return Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(children: [
