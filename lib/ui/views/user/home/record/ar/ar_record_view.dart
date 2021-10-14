@@ -24,20 +24,36 @@ class _ARRecordState extends State<ARRecord> {
   void _onArCoreViewCreated(ArCoreController controller) {
     arCoreController = controller;
 
-    _addCylindre(arCoreController);
-    _addCylindre2(arCoreController);
-    _addCylindre3(arCoreController);
+    _addCylindreCho(arCoreController);
+    _addCylindrePro(arCoreController);
+    _addCylindreFat(arCoreController);
   }
 
-  void _addCylindre(ArCoreController controller) {
+  void _addCylindreCho(ArCoreController controller) {
     final material = ArCoreMaterial(
       color: Colors.red,
       reflectance: 1.0,
     );
     final cylindre = ArCoreCylinder(
       materials: [material],
-      radius: 0.5,
-      height: 0.1,
+      radius: widget.record.carbs/50,
+      height: 0.15,
+    );
+    final node = ArCoreNode(
+      shape: cylindre,
+      position: vector.Vector3(-0.3, -0.5, -3.0),
+    );
+    controller.addArCoreNode(node);
+  }
+  void _addCylindrePro(ArCoreController controller) {
+    final material = ArCoreMaterial(
+      color: Colors.orange,
+      reflectance: 1.0,
+    );
+    final cylindre = ArCoreCylinder(
+      materials: [material],
+      radius: widget.record.protein/50,
+      height: 0.15,
     );
     final node = ArCoreNode(
       shape: cylindre,
@@ -45,35 +61,19 @@ class _ARRecordState extends State<ARRecord> {
     );
     controller.addArCoreNode(node);
   }
-  void _addCylindre2(ArCoreController controller) {
-    final material = ArCoreMaterial(
-      color: Colors.green,
-      reflectance: 1.0,
-    );
-    final cylindre = ArCoreCylinder(
-      materials: [material],
-      radius: 0.2,
-      height: 0.1,
-    );
-    final node = ArCoreNode(
-      shape: cylindre,
-      position: vector.Vector3(0.5, -0.5, -3.0),
-    );
-    controller.addArCoreNode(node);
-  }
-  void _addCylindre3(ArCoreController controller) {
+  void _addCylindreFat(ArCoreController controller) {
     final material = ArCoreMaterial(
       color: Colors.blue,
       reflectance: 1.0,
     );
     final cylindre = ArCoreCylinder(
       materials: [material],
-      radius: 0.7,
-      height: 0.1,
+      radius: widget.record.fats/50,
+      height: 0.15,
     );
     final node = ArCoreNode(
       shape: cylindre,
-      position: vector.Vector3(-0.5, -0.5, -3.0),
+      position: vector.Vector3(0.3, -0.5, -3.0),
     );
     controller.addArCoreNode(node);
   }
@@ -94,6 +94,7 @@ class _ARRecordState extends State<ARRecord> {
             onArCoreViewCreated: _onArCoreViewCreated,
         ),
         Container(
+          height: 150.0,
           color: Colors.green,
           child: Padding(
             padding: EdgeInsets.all(16.0),
@@ -107,8 +108,8 @@ class _ARRecordState extends State<ARRecord> {
                     Image(
                       image:
                           CachedNetworkImageProvider(widget.record.pictureUrl),
-                      width: 200,
-                      height: 200,
+                      width: 100,
+                      height: 100,
                       fit: BoxFit.fitHeight,
                     ),
                   ],
@@ -119,7 +120,12 @@ class _ARRecordState extends State<ARRecord> {
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
-                        child: Text("Food: ${widget.record.title}"),
+                        child: Text("Food: ${widget.record.title}",
+                          style: TextStyle(
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -135,7 +141,12 @@ class _ARRecordState extends State<ARRecord> {
                                 ),
                               ),
                               Text("CHO"),
-                              Text("${widget.record.carbs}"),
+                              Text("${widget.record.carbs}g",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ],
                           ),
                           Column(
@@ -149,7 +160,12 @@ class _ARRecordState extends State<ARRecord> {
                                 ),
                               ),
                               Text("PRO"),
-                              Text("${widget.record.protein}"),
+                              Text("${widget.record.protein}g",
+                                style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              ),
                             ],
                           ),
                           Column(
@@ -163,7 +179,12 @@ class _ARRecordState extends State<ARRecord> {
                                 ),
                               ),
                               Text("FAT"),
-                              Text("${widget.record.fats}"),
+                              Text("${widget.record.fats}g",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ],
                           ),
                         ],
