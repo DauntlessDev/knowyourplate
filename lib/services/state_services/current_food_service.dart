@@ -13,6 +13,7 @@ class CurrentFoodService extends ChangeNotifier {
       .first
       .quantity = input;
 
+
   setCurrentVegetableQuanity(double input) => _record.ingredients
       .where((element) => element.name == 'vegetables')
       .first
@@ -22,6 +23,13 @@ class CurrentFoodService extends ChangeNotifier {
       .where((element) => element.name == 'milk')
       .first
       .quantity = input;
+
+      
+  setCurrentRiceQuanity(double input) => _record.ingredients
+      .where((element) => element.name == 'rice')
+      .first
+      .quantity = input;
+      
       
 
   Future<void> updateCurrentFoodInfo(Record record) async {

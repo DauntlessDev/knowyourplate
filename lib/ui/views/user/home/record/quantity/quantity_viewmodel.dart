@@ -6,18 +6,31 @@ import 'package:stacked/stacked.dart';
 class QuantityViewModel extends BaseViewModel {
   final _currentFood = CurrentFoodService.instance;
 
+  //TODO: @Hez, use meattype for calculation and rice quantity
   double calculateFatComponent(
-      {double meat = 0, double milk = 0, double vegetable = 0}) {
+      {double meat = 0,
+      double milk = 0,
+      double vegetable = 0,
+      double rice = 0,
+      String meattype = 'low'}) {
     return ((meat * 7.5) + (milk * 7.5));
   }
 
   double calculateProteinComponent(
-      {double meat = 0, double milk = 0, double vegetable = 0}) {
+      {double meat = 0,
+      double milk = 0,
+      double vegetable = 0,
+      double rice = 0,
+      String meattype = 'low'}) {
     return ((meat * 8.0) + (milk * 8.0) + (vegetable * 1.0));
   }
 
   double calculateCarbsComponent(
-      {double meat = 0, double milk = 0, double vegetable = 0}) {
+      {double meat = 0,
+      double milk = 0,
+      double vegetable = 0,
+      double rice = 0,
+      String meattype = 'low'}) {
     return ((milk * 12.0) + (vegetable * 3.0));
   }
 
@@ -36,17 +49,23 @@ class QuantityViewModel extends BaseViewModel {
       _currentFood.record.fats = calculateFatComponent(
           meat: convertInput(meatQuantity),
           milk: convertInput(milkQuantity),
-          vegetable: convertInput(vegetableQuantity));
+          vegetable: convertInput(vegetableQuantity),
+          rice: convertInput(vegetableQuantity),
+          meattype: meatType);
 
       _currentFood.record.carbs = calculateCarbsComponent(
           meat: convertInput(meatQuantity),
           milk: convertInput(milkQuantity),
-          vegetable: convertInput(vegetableQuantity));
+          vegetable: convertInput(vegetableQuantity),
+          rice: convertInput(vegetableQuantity),
+          meattype: meatType);
 
       _currentFood.record.protein = calculateProteinComponent(
           meat: convertInput(meatQuantity),
           milk: convertInput(milkQuantity),
-          vegetable: convertInput(vegetableQuantity));
+          vegetable: convertInput(vegetableQuantity),
+          rice: convertInput(vegetableQuantity),
+          meattype: meatType);
 
       if (hasMeat) {
         _currentFood.setCurrentMeatQuanity(convertInput(meatQuantity));
@@ -59,6 +78,8 @@ class QuantityViewModel extends BaseViewModel {
         _currentFood.setCurrentMilkQuanity(convertInput(milkQuantity));
       }
 
+      _currentFood.setCurrentRiceQuanity(convertInput(riceQuantity));
+
       return Feedback(
           title: 'Success', details: 'Calculating components is successful.');
     } on PlatformException catch (e) {
@@ -67,10 +88,6 @@ class QuantityViewModel extends BaseViewModel {
   }
 
   bool hasMeat = false, hasMilk = false, hasVegetable = false;
-
-
-
-  //TODO: @Hez, use meattype for calculation
 
   String _meatType = 'Low';
   String get meatType => _meatType;
@@ -82,6 +99,10 @@ class QuantityViewModel extends BaseViewModel {
   String _meatQuantity = '';
   String get meatQuantity => _meatQuantity;
   setMeatQuantity(String input) => _meatQuantity = input;
+
+  String _riceQuantity = '';
+  String get riceQuantity => _riceQuantity;
+  setRiceQuantity(String input) => _riceQuantity = input;
 
   String _milkQuantity = '';
   String get milkQuantity => _milkQuantity;

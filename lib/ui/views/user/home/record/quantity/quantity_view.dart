@@ -180,6 +180,7 @@ class _SignupForm extends ViewModelWidget<QuantityViewModel> {
   final FocusNode _meatNode = FocusNode();
   final FocusNode _vegetableNode = FocusNode();
   final FocusNode _milkNode = FocusNode();
+  final FocusNode _riceNode = FocusNode();
 
   @override
   Widget build(BuildContext context, QuantityViewModel model) {
@@ -194,9 +195,7 @@ class _SignupForm extends ViewModelWidget<QuantityViewModel> {
                   focusNode: _meatNode,
                   onEditingComplete: model.hasVegetable
                       ? _vegetableNode.requestFocus
-                      : model.hasMilk
-                          ? _milkNode.requestFocus
-                          : model.calculateComponents,
+                      : _riceNode.requestFocus,
                   textInputAction: TextInputAction.next,
                   iconData: MdiIcons.foodSteak,
                 )
@@ -207,13 +206,22 @@ class _SignupForm extends ViewModelWidget<QuantityViewModel> {
                   hintString: 'Enter Vegetable Quantity',
                   onChanged: model.setVegetableQuantity,
                   focusNode: _vegetableNode,
-                  onEditingComplete: model.hasMilk
-                      ? _milkNode.requestFocus
-                      : model.calculateComponents,
+                  onEditingComplete: _riceNode.requestFocus,
                   textInputAction: TextInputAction.next,
                   iconData: MdiIcons.basket,
                 )
               : SizedBox(),
+          AuthTextFormField(
+            initialValue: model.riceQuantity,
+            hintString: 'Enter Rice Quantity',
+            onChanged: model.setRiceQuantity,
+            focusNode: _riceNode,
+            onEditingComplete: model.hasMilk
+                ? _milkNode.requestFocus
+                : model.calculateComponents,
+            textInputAction: TextInputAction.next,
+            iconData: MdiIcons.cup,
+          ),
           (model.hasMilk)
               ? AuthTextFormField(
                   initialValue: model.milkQuantity,

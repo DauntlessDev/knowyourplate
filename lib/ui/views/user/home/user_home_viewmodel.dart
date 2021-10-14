@@ -62,9 +62,11 @@ class UserHomeViewModel extends BaseViewModel {
                 image: _selectedImage, recordId: _recordId);
           }
 
+
           List<Ingredient> listOfIngredients = foodresult.components
               .map((component) => Ingredient(name: component, quantity: 0))
               .toList();
+
 
           await _food.updateCurrentFoodInfo(Record(
               recordId: _recordId,
