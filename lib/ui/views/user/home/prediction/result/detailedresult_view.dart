@@ -26,7 +26,6 @@ class DetailedResultView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    //TODO: [OPTIONAL] add conditions for icons for each disease
                     leading: Icon(MdiIcons.diabetes),
                     title: Text("Disease Name"),
                     subtitle: Text("Disease Probability"),

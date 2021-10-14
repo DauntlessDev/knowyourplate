@@ -47,7 +47,6 @@ class PredictionViewModel extends BaseViewModel {
     }
   }
 
-  //TODO: @Hez - Prediction of Disease;
   computeTotalComponents(int dateDifference) {
     double totalCarbs = 0;
     double totalProtein = 0;
@@ -58,7 +57,6 @@ class PredictionViewModel extends BaseViewModel {
     List<Record> filteredRecordList =
         _currentRecord.recordList.where((element) {
       DateTime elementDate = DateTime.parse(element.date);
-      //TODO: @Hez - Is it correct that for example, for the 3-day mode, if there is a 2 day difference from the current date to the first record of the user, allow it to predict? or it should be 3 day difference? Please double check thanks.
       return elementDate.difference(DateTime.now()).abs() >=
           Duration(days: dateDifference - 1);
     }).toList();

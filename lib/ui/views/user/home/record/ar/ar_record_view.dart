@@ -17,8 +17,6 @@ class ARRecord extends StatefulWidget {
 }
 
 class _ARRecordState extends State<ARRecord> {
-
-  // TODO: ARCore functions
   ArCoreController arCoreController;
 
   void _onArCoreViewCreated(ArCoreController controller) {
@@ -89,7 +87,6 @@ class _ARRecordState extends State<ARRecord> {
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
-        // TODO: ADD ARCoreView here
         ArCoreView(
             onArCoreViewCreated: _onArCoreViewCreated,
         ),
