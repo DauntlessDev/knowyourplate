@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.knowyourplate">
+
+    <uses-sdk android:minSdkVersion="24"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.ar" />
+
    <application
         android:label="Know Your Plate"
         android:icon="@mipmap/ic_launcher">

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowyourplate/ui/views/user/home/record/ar/ar_record_view.dart';
 import 'package:knowyourplate/ui/views/user/home/record/record_viewmodel.dart';
 import 'package:knowyourplate/ui/widgets/smart_widgets/user/record_maincontent.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -57,9 +58,7 @@ class RecordView extends StatelessWidget {
                   },
               },
             ),
-            body: SafeArea(
-              child: _MainContent(),
-            ),
+            body: _MainContent(),
           ),
         );
       },
@@ -74,6 +73,6 @@ class _MainContent extends ViewModelWidget<RecordViewModel> {
 
   @override
   Widget build(BuildContext context, RecordViewModel model) {
-    return RecordMainContent(record: model.foodInfo);
+    return ARRecord(record: model.foodInfo);
   }
 }
