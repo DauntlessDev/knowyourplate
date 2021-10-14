@@ -94,7 +94,10 @@ class PredictionViewModel extends BaseViewModel {
     setBusy(true);
     computeTotalComponents(7);
     Result result = await _database.predictDisease(
-        carbs: aveCarbs, protein: aveProtein, fats: aveFats);
+        carbs: aveCarbs,
+        protein: aveProtein,
+        fats: aveFats,
+        intensity: _intensity.toLowerCase());
     setBusy(false);
     return result;
   }
@@ -103,7 +106,10 @@ class PredictionViewModel extends BaseViewModel {
     setBusy(true);
     computeTotalComponents(30);
     Result result = await _database.predictDisease(
-        carbs: aveCarbs, protein: aveProtein, fats: aveFats);
+        carbs: aveCarbs,
+        protein: aveProtein,
+        fats: aveFats,
+        intensity: _intensity.toLowerCase());
     setBusy(false);
     return result;
   }
