@@ -13,17 +13,14 @@ class QuantityViewModel extends BaseViewModel {
       double rice = 0,
       String meattype = 'low'}) {
     double meatFactor = 1;
-    if (meattype == 'low'){
+    if (meattype == 'low') {
       meatFactor = 1.0;
-    }
-    else if (meattype == 'med'){
+    } else if (meattype == 'med') {
       meatFactor = 6;
-    }
-    else if (meattype == 'high') {
+    } else if (meattype == 'high') {
       meatFactor = 10;
     }
-      return ((meat * meatFactor) + (milk * 7.5));
-    }
+    return ((meat * meatFactor) + (milk * 7.5));
   }
 
   double calculateProteinComponent(
