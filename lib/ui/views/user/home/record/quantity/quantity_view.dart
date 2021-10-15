@@ -112,44 +112,71 @@ class _MainContent extends ViewModelWidget<QuantityViewModel> {
                         ),
                         actions: <Widget>[
                           TextButton(
-                            child: const Text('Confirm'),
-                            onPressed: () {
-                              model.result = model.calculateComponents();
-                              if (model.result.title == 'Success') {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => RecordView()));
-                              } else {
-                                showDialog<void>(
-                                  context: context,
-                                  barrierDismissible:
-                                      false, // user must tap button!
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(model.result.title),
-                                      content: SingleChildScrollView(
-                                        child: ListBody(
-                                          children: <Widget>[
-                                            Text(model.result.details),
+                              child: const Text('Confirm'),
+                              onPressed: () {
+                                try {
+                                  model.result = model.calculateComponents();
+                                  if (model.result.title == 'Success') {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RecordView()));
+                                  } else {
+                                    showDialog<void>(
+                                      context: context,
+                                      barrierDismissible:
+                                          false, // user must tap button!
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text(model.result.title),
+                                          content: SingleChildScrollView(
+                                            child: ListBody(
+                                              children: <Widget>[
+                                                Text(model.result.details),
+                                              ],
+                                            ),
+                                          ),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: const Text('Confirm'),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
                                           ],
-                                        ),
-                                      ),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text('Confirm'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                      ],
+                                        );
+                                      },
                                     );
-                                  },
-                                );
-                                print('error in calculating');
-                              }
-                            },
-                          ),
+                                    print('error in calculating');
+                                  }
+                                } catch (e) {showDialog<void>(
+                                      context: context,
+                                      barrierDismissible:
+                                          false, // user must tap button!
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text('Failed'),
+                                          content: SingleChildScrollView(
+                                            child: ListBody(
+                                              children: <Widget>[
+                                                Text('Please input valid number'),
+                                              ],
+                                            ),
+                                          ),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: const Text('Confirm'),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                }
+                              }),
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop();
