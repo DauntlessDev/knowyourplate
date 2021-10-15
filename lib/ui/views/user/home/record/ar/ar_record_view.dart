@@ -119,7 +119,7 @@ class _ARRecordState extends State<ARRecord> {
                         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
                         child: Text("Food: ${widget.record.title}",
                           style: TextStyle(
-                            fontSize: 32.0,
+                            fontSize: 16.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -140,7 +140,7 @@ class _ARRecordState extends State<ARRecord> {
                               Text("CHO"),
                               Text("${widget.record.carbs}g",
                                 style: TextStyle(
-                                  fontSize: 16.0,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -159,7 +159,7 @@ class _ARRecordState extends State<ARRecord> {
                               Text("PRO"),
                               Text("${widget.record.protein}g",
                                 style: TextStyle(
-                                fontSize: 16.0,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                               ),
                               ),
@@ -178,7 +178,7 @@ class _ARRecordState extends State<ARRecord> {
                               Text("FAT"),
                               Text("${widget.record.fats}g",
                                 style: TextStyle(
-                                  fontSize: 16.0,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
