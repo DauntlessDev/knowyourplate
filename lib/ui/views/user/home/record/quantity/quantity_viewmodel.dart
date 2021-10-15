@@ -6,14 +6,24 @@ import 'package:stacked/stacked.dart';
 class QuantityViewModel extends BaseViewModel {
   final _currentFood = CurrentFoodService.instance;
 
-  //TODO: @Hez, use meattype for calculation and rice quantity
   double calculateFatComponent(
       {double meat = 0,
       double milk = 0,
       double vegetable = 0,
       double rice = 0,
       String meattype = 'low'}) {
-    return ((meat * 7.5) + (milk * 7.5));
+    double meatFactor = 1;
+    if (meattype == 'low'){
+      meatFactor = 1.0;
+    }
+    else if (meattype == 'med'){
+      meatFactor = 6;
+    }
+    else if (meattype == 'high') {
+      meatFactor = 10;
+    }
+      return ((meat * meatFactor) + (milk * 7.5));
+    }
   }
 
   double calculateProteinComponent(
@@ -22,7 +32,7 @@ class QuantityViewModel extends BaseViewModel {
       double vegetable = 0,
       double rice = 0,
       String meattype = 'low'}) {
-    return ((meat * 8.0) + (milk * 8.0) + (vegetable * 1.0));
+    return ((meat * 8.0) + (milk * 8.0) + (vegetable * 1.0) + (rice * 2.0));
   }
 
   double calculateCarbsComponent(
@@ -31,7 +41,7 @@ class QuantityViewModel extends BaseViewModel {
       double vegetable = 0,
       double rice = 0,
       String meattype = 'low'}) {
-    return ((milk * 12.0) + (vegetable * 3.0));
+    return ((milk * 12.0) + (vegetable * 3.0) + (rice * 23.0));
   }
 
   double convertInput(String input) {
