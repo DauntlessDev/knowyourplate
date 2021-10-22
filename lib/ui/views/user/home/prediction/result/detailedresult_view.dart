@@ -27,8 +27,8 @@ class DetailedResultView extends StatelessWidget {
                 children: [
                   ListTile(
                     leading: Icon(MdiIcons.diabetes),
-                    title: Text("Disease Name"),
-                    subtitle: Text("Disease Probability"),
+                    title: Text(disease.name),
+                    subtitle: Text(disease.probability),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
