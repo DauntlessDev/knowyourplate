@@ -70,9 +70,9 @@ class PredictionViewModel extends BaseViewModel {
       count += 1;
     }
 
-    aveCarbs = totalCarbs / filteredRecordList.length;
-    aveProtein = totalProtein / filteredRecordList.length;
-    aveFats = totalFats / filteredRecordList.length;
+    aveCarbs = totalCarbs / dateDifference;
+    aveProtein = totalProtein / dateDifference;
+    aveFats = totalFats / dateDifference;
   }
 
   Future<Result> predictThreeDay() async {
