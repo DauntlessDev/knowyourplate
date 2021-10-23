@@ -11,13 +11,13 @@ class QuantityViewModel extends BaseViewModel {
       double milk = 0,
       double vegetable = 0,
       double rice = 0,
-      String meattype = 'low'}) {
+      String meattype = 'Low'}) {
     double meatFactor = 1;
-    if (meattype == 'low') {
+    if (meattype == 'Low') {
       meatFactor = 1.0;
-    } else if (meattype == 'med') {
+    } else if (meattype == 'Med') {
       meatFactor = 6;
-    } else if (meattype == 'high') {
+    } else if (meattype == 'High') {
       meatFactor = 10;
     }
     return ((meat * meatFactor) + (milk * 7.5));
@@ -28,7 +28,7 @@ class QuantityViewModel extends BaseViewModel {
       double milk = 0,
       double vegetable = 0,
       double rice = 0,
-      String meattype = 'low'}) {
+      String meattype = 'Low'}) {
     return ((meat * 8.0) + (milk * 8.0) + (vegetable * 1.0) + (rice * 2.0));
   }
 
@@ -37,7 +37,7 @@ class QuantityViewModel extends BaseViewModel {
       double milk = 0,
       double vegetable = 0,
       double rice = 0,
-      String meattype = 'low'}) {
+      String meattype = 'Low'}) {
     return ((milk * 12.0) + (vegetable * 3.0) + (rice * 23.0));
   }
 
@@ -57,21 +57,21 @@ class QuantityViewModel extends BaseViewModel {
           meat: convertInput(meatQuantity),
           milk: convertInput(milkQuantity),
           vegetable: convertInput(vegetableQuantity),
-          rice: convertInput(vegetableQuantity),
+          rice: convertInput(riceQuantity),
           meattype: meatType);
 
       _currentFood.record.carbs = calculateCarbsComponent(
           meat: convertInput(meatQuantity),
           milk: convertInput(milkQuantity),
           vegetable: convertInput(vegetableQuantity),
-          rice: convertInput(vegetableQuantity),
+          rice: convertInput(riceQuantity),
           meattype: meatType);
 
       _currentFood.record.protein = calculateProteinComponent(
           meat: convertInput(meatQuantity),
           milk: convertInput(milkQuantity),
           vegetable: convertInput(vegetableQuantity),
-          rice: convertInput(vegetableQuantity),
+          rice: convertInput(riceQuantity),
           meattype: meatType);
 
       if (hasMeat) {
