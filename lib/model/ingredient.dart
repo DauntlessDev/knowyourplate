@@ -9,10 +9,21 @@ class Ingredient {
   final String name;
   double quantity;
 
-  factory Ingredient.fromJson(Map<String, dynamic> json) => Ingredient(
+  factory Ingredient.fromJson(Map<String, dynamic> json){ 
+     double quantityValue;
+    
+    if(json['quantity'] is int){
+      quantityValue = json['quantity'].toDouble();
+    } else{
+      quantityValue = json['quantity'];
+    }
+    
+    return Ingredient(
         name: json["name"],
-        quantity: json["quantity"],
+        quantity: quantityValue,
       );
+}
+
 
   Map<String, dynamic> toJson() => {
         "name": name,

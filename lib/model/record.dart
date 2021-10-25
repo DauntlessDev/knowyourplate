@@ -50,18 +50,46 @@ class Record {
     );
   }
 
-  factory Record.fromJson(Map<String, dynamic> json) => Record(
+  factory Record.fromJson(Map<String, dynamic> json) { 
+
+    double carbsValue;
+    double proteinValue;
+    double fatsValue;
+    
+    if(json['carbs'] is int){
+      carbsValue = json['carbs'].toDouble();
+    } else{
+      
+      carbsValue = json['carbs'];
+    }
+    
+    if(json['carbs'] is int){
+      proteinValue = json['protein'].toDouble();
+    } else{
+      
+      proteinValue = json['protein'];
+    }
+    
+    if(json['carbs'] is int){
+      fatsValue = json['fats'].toDouble();
+    } else{
+      
+      fatsValue = json['fats'];
+    }
+    
+    return Record(
         recordId: json['recordId'],
         userEmail: json['userEmail'],
         title: json['title'],
         pictureUrl: json['pictureUrl'],
         date: json['date'],
-        carbs: json['carbs'],
-        protein: json['protein'],
-        fats: json['fats'],
+        carbs: carbsValue,
+        protein: proteinValue,
+        fats: fatsValue,
         ingredients: List<Ingredient>.from(
             json["ingredients"]?.map((x) => Ingredient.fromJson(x))),
       );
+  }
 
   Map<String, dynamic> toMap() {
     return {
