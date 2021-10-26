@@ -23,6 +23,9 @@ class PopulateDb extends BaseViewModel {
         Ingredient(name: "rice", quantity: 1),
       ],
     )
+
+    //TODO: add more records here
+    
   ];
 
   void populateRom() {
