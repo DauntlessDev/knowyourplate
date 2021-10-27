@@ -1,4 +1,4 @@
-import 'package:knowyourplate/model/ingredient.dart';
+// import 'package:knowyourplate/model/ingredient.dart';
 import 'package:knowyourplate/model/record.dart';
 import 'package:knowyourplate/services/functional_services/database_service.dart';
 
