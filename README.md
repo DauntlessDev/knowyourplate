@@ -1,6 +1,22 @@
 # knowyourplate
 
-A new Flutter project for CS Project Mangement and Thesis
+A Flutter project for CS Project Mangement and Thesis
+
+Know Your Plate is a mobile application that aims to improve the health of Filipinos, specially in our diet. Users can take pictures of their meals, and with the food classifier, it can determine what Filipino dish is to be consumed. Each meal is recorded to monitor and keep track of your diet. It can also calculate the macronutrients, which then can be used for the prediction of possible health diet related diseases and their risks, based on the records of your diet.
+
+AVP : https://youtu.be/y1xELiy_enE
+
+Screenshots:
+
+
+<p align="center">
+<img src="https://github.com/DauntlessDev/knowyourplate/blob/flutter-dev/screenshots/home.jpg" width="150px;" alt=""/>
+<img src="https://github.com/DauntlessDev/knowyourplate/blob/flutter-dev/screenshots/chart.jpg" width="150px;" alt=""/>
+<img src="https://github.com/DauntlessDev/knowyourplate/blob/flutter-dev/screenshots/classifier.png" width="150px;" alt=""/>
+<img src="https://github.com/DauntlessDev/knowyourplate/blob/flutter-dev/screenshots/prediction.png" width="150px;" alt=""/>
+</p>
+
+
 
 
 
